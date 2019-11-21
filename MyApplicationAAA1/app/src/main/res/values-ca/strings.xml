@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application AAA1</string>
+
+    <string name="tab_profile">Perfil</string>
+    <string name="tab_home">Casa</string>
+    <string name="tab_chat">Chat</string>
+
+</resources>

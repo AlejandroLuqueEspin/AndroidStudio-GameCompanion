@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "443154444722",
+    "firebase_url": "https://gamecompanionalejandroluque.firebaseio.com",
+    "project_id": "gamecompanionalejandroluque",
+    "storage_bucket": "gamecompanionalejandroluque.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:443154444722:android:b79de64376c1fecbbbb4ab",
+        "android_client_info": {
+          "package_name": "com.enti.alejandroluque"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "443154444722-n8lp7p2lmdfq4jdpndct2ftfd1n9p73v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAblAIQZ3yN_Lg1Fsa-YYwPbt06xepyXww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "443154444722-n8lp7p2lmdfq4jdpndct2ftfd1n9p73v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
