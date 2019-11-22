@@ -21,11 +21,11 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- *
- */
+
 class ProfileFragment : Fragment() {
+
+
+
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -53,18 +53,18 @@ class ProfileFragment : Fragment() {
     private fun initUI(){
 
         if(FirebaseAuth.getInstance().currentUser==null){
-            logoutButton.Visibility=View.GONE
-            registerButton.Visibility=View.VISIBLE
-            registerButton.SetOnClickListener{
+            logoutButton.visibility=View.GONE
+            registerButton.visibility=View.VISIBLE
+            registerButton.setOnClickListener{
                 startActivity(Intent(requireContext(), RegisterActivity::class.java))
             }
         }
         else
         {
-            registerButton.Visibility=View.GONE
-            logoutButton.Visibility=View.VISIBLE
+            registerButton.visibility=View.GONE
+            logoutButton.visibility=View.VISIBLE
 
-            logoutButton.SetOnClickListener{
+            logoutButton.setOnClickListener{
                 FirebaseAuth.getInstance().signOut()
                 //Show success to user
                 initUI()

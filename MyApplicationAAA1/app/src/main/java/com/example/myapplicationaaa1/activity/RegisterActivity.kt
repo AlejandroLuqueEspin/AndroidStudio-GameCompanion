@@ -3,76 +3,71 @@ package com.example.myapplicationaaa1.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.NonNull
+import com.example.myapplicationaaa1.ProfileFragment
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.model.UserModel
+import com.google.android.gms.dynamic.IFragmentWrapper
+import com.google.firebase.auth.AuthResult
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class RegisterActivity : AppCompatActivity() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
     }
+
+
+private fun createNewUser(){
     val username=usernameEditText.text.toString()
     val email=emailEditText.text.toString()
     val password=passwordEditText.text.toString()
 
-
-
-    //2 VALIDATIONS
-    //VALIDATE USERNAME
-    if(username.isBlank()){
-
+    if(!username.isEmpty()) {
+        Toast.makeText(this,"Please Enter UserName", Toast.LENGTH_LONG).show()
+        return
     }
-    //VALIDATE EMAIL
-    if(email.isBlank()||!Patterns.EMAIL_ADRESS.matcher(email).matches()){
-
-    }
-    //VALIDATE PASSWORD
-    if(password.isBlank()||!isPasswordValid(password)){
-
+    else if(!email.isEmpty()){
+        Toast.makeText(this,"Please Enter Email", Toast.LENGTH_LONG).show()
+        return
     }
 
-    //3 send to firebase
-    FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).addOnSuccessListener
-    {authResult->
-
-
-
-        //create user profile
-        val user=
-            UserModel(
-                userID = authResult.user?.uid,
-                email = email,
-                userName = username
-            )
-        FirebaseFirestore.getInstance()
-            .collection("users")
-            .document(authResult.user?.uid?:"")//si no existe te lo crea vacio
-            .set(user).addOnSuccessListener {
-                //Success
-                Toast.makeText(usernameEditText.context,
-                    "User Created Successfully!",
-                    Toast.LENGTH_LONG
-                ).show()
-                //closeActivity
-                finish()
-
-            }.addOnFailureListener{
-                Toast.makeText(usernameEditText.context,
-                    it.localizedMessage,
-                    Toast.LENGTH_LONG).show()
-            }
-
-
-    }.addOnFailureListener{
-        Toast.makeText(usernameEditText.context,it.localizeMessage,Toast.LENGTH_LONG).show()
+    else if(!password.isEmpty()){
+        Toast.makeText(this,"Please Enter Password", Toast.LENGTH_LONG).show()
+        return
     }
 
-    fun isPasswordValid(password: String):Boolean{
+    else{
+        //Progress bar
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
+            .addOnCompleteListener{
+                if(it.isSuccessful()){
+                    startActivity(Intent(this, ProfileFragment::class.java))
 
-        return true
+                }else{
+                    Toast.makeText(this,"Please Try Again Later", Toast.LENGTH_LONG).show()
+                }
+
+
     }
+
+
+
+
+    }
+
+
+
+
+}
+
+
 
 
 

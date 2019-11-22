@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "443154444722",
-    "firebase_url": "https://gamecompanionalejandroluque.firebaseio.com",
-    "project_id": "gamecompanionalejandroluque",
-    "storage_bucket": "gamecompanionalejandroluque.appspot.com"
+    "project_number": "15557798499",
+    "firebase_url": "https://gamecompanionentialejandro.firebaseio.com",
+    "project_id": "gamecompanionentialejandro",
+    "storage_bucket": "gamecompanionentialejandro.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:443154444722:android:b79de64376c1fecbbbb4ab",
+        "mobilesdk_app_id": "1:15557798499:android:b07ba9ed713f59916d6656",
         "android_client_info": {
-          "package_name": "com.enti.alejandroluque"
+          "package_name": "com.example.myapplicationaaa1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "443154444722-n8lp7p2lmdfq4jdpndct2ftfd1n9p73v.apps.googleusercontent.com",
+          "client_id": "15557798499-9rrj2u5f1cia7b6o21alj8sbvnmv2bib.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAblAIQZ3yN_Lg1Fsa-YYwPbt06xepyXww"
+          "current_key": "AIzaSyCDYWgNXFk1OX6reHs1XWSuh20_VfvNm9I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "443154444722-n8lp7p2lmdfq4jdpndct2ftfd1n9p73v.apps.googleusercontent.com",
+              "client_id": "15557798499-9rrj2u5f1cia7b6o21alj8sbvnmv2bib.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -89,4 +89,10 @@ class UserDao {
                 failureListener(it)
             }
     }
+
+    fun registerUser(user: UserModel,
+                     successListener: (users:List<UserModel>)->(Unit),
+                     failureListener: (error: Exception)->Unit){
+
+    }
 }
