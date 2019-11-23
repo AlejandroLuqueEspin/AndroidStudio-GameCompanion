@@ -24,7 +24,14 @@ private const val ARG_PARAM2 = "param2"
 
 class ProfileFragment : Fragment() {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
+        loginButton.setOnClickListener{
+            Toast.makeText(context, "You clicked me.", Toast.LENGTH_SHORT).show()
+            LoginUser()
+        }
+    }
 
 
     override fun onAttach(context: Context) {
@@ -46,39 +53,53 @@ class ProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        initUI()
+        LoginUser()
     }
 
+    private fun LoginUser() {
 
-    private fun initUI(){
+        val username = usernameEditText.text.toString()
+        val password = passwordEditText.text.toString()
 
-        if(FirebaseAuth.getInstance().currentUser==null){
-            logoutButton.visibility=View.GONE
-            registerButton.visibility=View.VISIBLE
-            registerButton.setOnClickListener{
-                startActivity(Intent(requireContext(), RegisterActivity::class.java))
-            }
+        if (!username.isEmpty()) {
+            Toast.makeText(context, "Please Enter UserName", Toast.LENGTH_LONG).show()
+            return
         }
-        else
-        {
-            registerButton.visibility=View.GONE
-            logoutButton.visibility=View.VISIBLE
-
-            logoutButton.setOnClickListener{
-                FirebaseAuth.getInstance().signOut()
-                //Show success to user
-                initUI()
-
+        else if (!password.isEmpty()) {
+            Toast.makeText(context, "Please Enter Password", Toast.LENGTH_LONG).show()
+            return
+        }
+        else { //Progress bar
+            //Login aND INIT
+            if(FirebaseAuth.getInstance().currentUser==null){//no hay user
+                logoutButton.visibility=View.GONE
+                registerButton.visibility=View.VISIBLE
+                registerButton.setOnClickListener{
+                    startActivity(Intent(requireContext(), RegisterActivity::class.java))
+                }
             }
-            //Le ponemos ? let porque es nullable
-            FirebaseAuth.getInstance().currentUser?.uid?.let {userID->
-                UserDao().get(userID,
-                    successListener = {user ->
-                        usernameTextView.text=user?.userName
-                    },
-                    failureListener = {
-                        //toast? el usuario no lo necesita
-                    })
+            else
+            {
+                registerButton.visibility=View.GONE
+                loginButton.visibility=View.GONE
+                logoutButton.visibility=View.VISIBLE
+
+                logoutButton.setOnClickListener{
+                    FirebaseAuth.getInstance().signOut()
+                    //Show success to user
+                    LoginUser()
+
+                }
+                //Le ponemos ? let porque es nullable
+                FirebaseAuth.getInstance().currentUser?.uid?.let {userID->
+                    UserDao().get(userID,
+                        successListener = {user ->
+                            //usernameTextView.text=user?.userName
+                        },
+                        failureListener = {
+                            //toast? el usuario no lo necesita
+                        })
+                }
             }
         }
 
@@ -106,10 +127,10 @@ class ProfileFragment : Fragment() {
             } )
     }
 
-    private fun updateUser(){
-        UserDao().update(
-
-        )
-    }
+//    private fun updateUser(){
+//        UserDao().update(
+//
+//        )
+//    }
 
 }
