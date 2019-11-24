@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@drawable/login_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
         tools:context=".activity.RegisterActivity">
 
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_centerVertical="true">
         <ImageView
+                android:layout_marginTop="50dp"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/ic_icon"
@@ -24,7 +20,7 @@
                 android:id="@+id/usernameEditText"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_user"
                 android:hint="Username"
@@ -45,7 +41,7 @@
                 android:background="@drawable/login_edit_background"
                 android:padding="10dp"/>
         <TextView
-                android:id="@+id/loginButton"
+                android:id="@+id/ForgotPassword"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_width="wrap_content"
@@ -87,7 +83,4 @@
                 android:textAllCaps="false"
                 android:textSize="21sp"/>
 
-
-    </LinearLayout>
-
-</RelativeLayout>
+</LinearLayout>

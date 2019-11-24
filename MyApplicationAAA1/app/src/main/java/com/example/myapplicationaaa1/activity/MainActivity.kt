@@ -2,11 +2,11 @@ package com.example.myapplicationaaa1.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import com.example.myapplicationaaa1.fragment.ProfileFragment
+import android.widget.Toast
 import com.example.myapplicationaaa1.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.example.myapplicationaaa1.fragment.LoginActivity_Fragment
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,11 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Para inicar el gragmentlayout con algo al inicio
-        val profileFragment= ProfileFragment()
+        val profileFragment= LoginActivity_Fragment()
         val fragmentTransaction =supportFragmentManager.beginTransaction()
         fragmentTransaction.add(fragmentContainer.id,profileFragment)
         fragmentTransaction.commit()
-
 
 
         bottomNavView.setOnNavigationItemSelectedListener {
@@ -28,9 +27,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.chat ->{}
                 R.id.home ->{}
                 R.id.profile ->{
-                    val profileFragment= ProfileFragment()
+                    val profileFragment= LoginActivity_Fragment()
                     val fragmentTransaction =supportFragmentManager.beginTransaction()
-                    fragmentTransaction.add(fragmentContainer.id,profileFragment)
+                    fragmentTransaction.replace(fragmentContainer.id,profileFragment)
                     fragmentTransaction.commit()
 
                 }

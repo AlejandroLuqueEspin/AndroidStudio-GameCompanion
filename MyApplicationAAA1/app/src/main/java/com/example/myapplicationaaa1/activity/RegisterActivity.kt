@@ -18,7 +18,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         registerButton.setOnClickListener{
-            Toast.makeText(this, "You clicked me.", Toast.LENGTH_SHORT).show()
             createNewUser()
         }
 
@@ -33,16 +32,16 @@ private fun createNewUser(){
         val email=emailEditText.text.toString()
         val password=passwordEditText.text.toString()
 
-        if(!username.isEmpty()) {
+        if(username.isEmpty()) {
             Toast.makeText(this,"Please Enter UserName", Toast.LENGTH_LONG).show()
             return
         }
-        else if(!email.isEmpty()){
+        else if(email.isEmpty()){
             Toast.makeText(this,"Please Enter Email", Toast.LENGTH_LONG).show()
             return
         }
 
-        else if(!password.isEmpty()){
+        else if(password.isEmpty()){
             Toast.makeText(this,"Please Enter Password", Toast.LENGTH_LONG).show()
             return
         }
