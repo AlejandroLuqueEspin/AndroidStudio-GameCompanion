@@ -13,7 +13,7 @@ class UserDao {
             failureListener: (error: Exception)->Unit){
 
         FirebaseFirestore.getInstance()
-            .collection("users")
+            .collection("Users")
             .document(userId)
             .get()
             //ON SUCCESS
@@ -21,7 +21,6 @@ class UserDao {
                 //CODE ON SUCCESS (THE BASEDATA REQUEST)
                 val user = documentSnapshot.toObject(UserModel::class.java)
                 if(user==null){
-
                 }
                 else {
                     //LLAMAMOS AL SUCCESSLISTENER DE FUERA Y LE PASAMOS LA VARIABLE

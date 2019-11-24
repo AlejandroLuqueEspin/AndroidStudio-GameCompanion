@@ -8,26 +8,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
 import com.example.myapplicationaaa1.utils.UserDao
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_profile.*
-
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import kotlinx.android.synthetic.main.fragment_profile.passwordEditText
+import kotlinx.android.synthetic.main.fragment_profile.registerButton
 
 
 class LoginActivity_Fragment : Fragment() {
 
-
-
+    override fun onResume() {
+        super.onResume()
+        UpdateUI()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,13 +33,11 @@ class LoginActivity_Fragment : Fragment() {
         ): View? {
         val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
 
-        // Inflate the layout for this fragment
         return view;
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        logoutButton.visibility=View.GONE
         registerButton.visibility=View.VISIBLE
         LogIn.visibility=View.VISIBLE
 
@@ -50,21 +46,44 @@ class LoginActivity_Fragment : Fragment() {
             LoginUser()
         }
         registerButton.setOnClickListener{
-            startActivity(Intent(requireContext(), RegisterActivity::class.java))
+            if(FirebaseAuth.getInstance().currentUser==null)
+                startActivity(Intent(requireContext(), RegisterActivity::class.java))
+            UpdateUI()
+
         }
+
+        UpdateUI()
     }
 
+    private fun UpdateUI(){
+        if(FirebaseAuth.getInstance().currentUser==null){
+            registerButton.visibility=View.VISIBLE
+            LogIn.visibility=View.VISIBLE
+        }
+        else
+        {
+            registerButton.visibility=View.GONE
+            LogIn.visibility=View.GONE
+
+            //Change fragment
+            val newFragment= ProfileActivity_Fragment()
+            val fragmentTransaction =activity?.supportFragmentManager?.beginTransaction()
+            fragmentTransaction?.replace(R.id.fragmentContainer,newFragment)
+            fragmentTransaction?.commit()
+        }
+
+    }
 
     private fun LoginUser() {
 
-        val username = usernameEditText.text.toString()
         val password = passwordEditText.text.toString()
+        val email = emailLoginEditText.text.toString()
 
-        if (!username.isEmpty()) {
-            Toast.makeText(context, "Please Enter UserName", Toast.LENGTH_LONG).show()
+        if (email.isEmpty()) {
+            Toast.makeText(context, "Please Enter Email", Toast.LENGTH_LONG).show()
             return
         }
-        else if (!password.isEmpty()) {
+        else if (password.isEmpty()) {
             Toast.makeText(context, "Please Enter Password", Toast.LENGTH_LONG).show()
             return
         }
@@ -72,29 +91,13 @@ class LoginActivity_Fragment : Fragment() {
             //Login aND INIT
             if(FirebaseAuth.getInstance().currentUser==null){//no hay usera logeado
                 //check en la base de datos
-            }
-            else
-            {
-                registerButton.visibility=View.GONE
-                LogIn.visibility=View.GONE
-                logoutButton.visibility=View.VISIBLE
+                val auth=FirebaseAuth.getInstance()
+                auth.signInWithEmailAndPassword(email,password)
 
-                logoutButton.setOnClickListener{
-                    FirebaseAuth.getInstance().signOut()
-                    //Show success to user
-                    LoginUser()
+                auth.currentUser?.uid?.let {userID->
+                    getUser(userID)
+                }
 
-                }
-                //Le ponemos ? let porque es nullable
-                FirebaseAuth.getInstance().currentUser?.uid?.let {userID->
-                    UserDao().get(userID,
-                        successListener = {user ->
-                            //usernameTextView.text=user?.userName
-                        },
-                        failureListener = {
-                            //toast? el usuario no lo necesita
-                        })
-                }
             }
         }
 
@@ -106,18 +109,36 @@ class LoginActivity_Fragment : Fragment() {
         UserDao().getAll (
             successListener = {users->
                 //adapter.users=users
+
             },
             failureListener={
+                Toast.makeText(context, "Los datos de usuario/contraseñoa son incorrectos", Toast.LENGTH_LONG).show()
+
                 Toast.makeText(requireContext(),it.localizedMessage,Toast.LENGTH_LONG).show()
             }
         )
     }
-    private fun getUser(){
-        UserDao().get (userId = "userID",
+    private fun getUser(userId:String){
+        UserDao().get (userId = userId,
             successListener ={
+
+                UpdateUI()
+//                userConsulted->
+////                userConsulted.let {
+////                    it?.password?.let {password->
+////                        passwordEditText.text=password
+////                    }
+////                    it?.email?.let {email->
+////                        emailLoginEditText.text=email
+////                    }
+////                }
+
+                Toast.makeText(context, "Los datos de usuario/contraseñoa son correctos", Toast.LENGTH_LONG).show()
 
             },
             failureListener ={
+                Toast.makeText(context, "Los datos de usuario/contraseñoa son incorrectos", Toast.LENGTH_LONG).show()
+
 
             } )
     }

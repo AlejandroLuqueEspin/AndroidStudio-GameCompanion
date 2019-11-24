@@ -2,11 +2,9 @@ package com.example.myapplicationaaa1.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.fragment.LoginActivity_Fragment
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class MainActivity : AppCompatActivity() {
 

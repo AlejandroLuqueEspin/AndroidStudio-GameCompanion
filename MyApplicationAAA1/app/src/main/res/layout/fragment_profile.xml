@@ -17,29 +17,31 @@
                 android:layout_gravity="center_horizontal"/>
 
         <EditText
-                android:id="@+id/usernameEditText"
+                android:id="@+id/emailLoginEditText"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="50dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_user"
-                android:hint="Username"
+                android:hint="Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edit_background"
                 android:padding="10dp"/>
+
         <EditText
                 android:id="@+id/passwordEditText"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="20dp"
-                android:drawablePadding="10dp"
-                android:drawableStart="@drawable/ic_password"
-                android:hint="Password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/login_edit_background"
-                android:padding="10dp"/>
+                android:drawableStart="@drawable/ic_password"
+                android:drawablePadding="10dp"
+                android:hint="Password"
+                android:padding="10dp" />
+
         <TextView
                 android:id="@+id/ForgotPassword"
                 android:layout_marginStart="20dp"
@@ -60,17 +62,17 @@
                 android:text="Log In"
                 android:textAllCaps="false"
                 android:textSize="21sp"/>
-        <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/login_button_background"
-                android:text="Log Out"
-                android:textAllCaps="false"
-                android:textSize="21sp"/>
+<!--        <Button-->
+<!--                android:id="@+id/logoutButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:background="@drawable/login_button_background"-->
+<!--                android:text="Log Out"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textSize="21sp"/>-->
         <Button
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"

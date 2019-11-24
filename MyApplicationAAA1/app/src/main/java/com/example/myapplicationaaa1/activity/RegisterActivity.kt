@@ -21,6 +21,7 @@ class RegisterActivity : AppCompatActivity() {
             createNewUser()
         }
 
+
     }
 
 
@@ -48,24 +49,71 @@ private fun createNewUser(){
 
         else{
             //Progress bar
-            //Register
-            val dataBase= FirebaseFirestore.getInstance();
-            val newUser=UserModel("",
-                username,
-                password,
-                email
-            )
-            dataBase
-                .collection("Users")
-                .add(newUser)
-                .addOnSuccessListener {documentReference ->
-                    Toast.makeText(this,"Register Complete", Toast.LENGTH_LONG).show()
-                }.addOnFailureListener { e ->
-                    Toast.makeText(this,"Error, try again later", Toast.LENGTH_LONG).show()
+            //Register with
+            lateinit var auth: FirebaseAuth
+            auth=FirebaseAuth.getInstance()
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Toast.makeText(this,"Created UserWithEmail", Toast.LENGTH_LONG).show()
+                        val user = auth.currentUser
+
+                        //Aqui???Register in FiraStore
+                        val dataBase= FirebaseFirestore.getInstance();
+                        val newUser=UserModel("",
+                            username,
+                            password,
+                            email
+                        )
+                            if (user != null){
+                                dataBase
+                                    .collection("Users")
+                                    .document(user.uid)
+                                    .set(newUser)
+                                    .addOnSuccessListener {documentReference ->
+                                        Toast.makeText(this,"Register Complete", Toast.LENGTH_LONG).show()
+                                    }.addOnFailureListener { e ->
+                                        Toast.makeText(this,"Error, try again later", Toast.LENGTH_LONG).show()
+                                    }
+                            }
+                            else {
+                                Toast.makeText(this,"Error, user ==null", Toast.LENGTH_LONG).show()
+
+                            }
+
+
+                    }
+                    else {
+                        // If sign in fails, display a message to the user.
+                        Toast.makeText(this,"Authentication failed.", Toast.LENGTH_LONG).show()
+                    }
                 }
 
-        }
 
+        }
+    //old stuff
+    {
+        //        else{
+//            //Progress bar
+//            //Register
+//            val dataBase= FirebaseFirestore.getInstance();
+//            val newUser=UserModel("",
+//                username,
+//                password,
+//                email
+//            )
+//            dataBase
+//                .collection("Users")
+//                .add(newUser)
+//                .addOnSuccessListener {documentReference ->
+//                    Toast.makeText(this,"Register Complete", Toast.LENGTH_LONG).show()
+//                }.addOnFailureListener { e ->
+//                    Toast.makeText(this,"Error, try again later", Toast.LENGTH_LONG).show()
+//                }
+//
+//        }
+    }
 
     }
 
