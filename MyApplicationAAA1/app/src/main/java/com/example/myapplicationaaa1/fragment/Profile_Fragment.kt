@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.example.myapplicationaaa1.R
 import com.google.firebase.auth.FirebaseAuth
 
-class ProfileActivity_Fragment : Fragment() {
+class Profile_Fragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
@@ -47,7 +47,7 @@ class ProfileActivity_Fragment : Fragment() {
     private fun UpdateUI(){
         if(FirebaseAuth.getInstance().currentUser==null){
             //Change fragment
-            val newFragment= LoginActivity_Fragment()
+            val newFragment= Login_Fragment()
             val fragmentTransaction =activity?.supportFragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragmentContainer,newFragment)
             fragmentTransaction?.commit()

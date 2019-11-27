@@ -1,5 +1,6 @@
 package com.example.myapplicationaaa1.utils
 
+import com.example.myapplicationaaa1.model.NewsModel
 import com.example.myapplicationaaa1.model.UserModel
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
@@ -89,9 +90,35 @@ class UserDao {
             }
     }
 
-    fun registerUser(user: UserModel,
-                     successListener: (users:List<UserModel>)->(Unit),
-                     failureListener: (error: Exception)->Unit){
+    //IMPLEMENTAR
+    fun getAllPosts(successListener: (news:ArrayList<NewsModel>)->(Unit),
+               failureListener: (error: Exception)->Unit){// un parametro bloc (bloque de codigo), sera de tipo list que le pasamos unos users
 
+        FirebaseFirestore.getInstance()
+            .collection("Posts")
+            //get all documents
+            .get()
+            //On success
+            .addOnSuccessListener { querySnapshot ->
+                //QuerysBAPSHOTS CONTAINS DOCUMENTS AND METADATA
+                val documents=querySnapshot.documents
+                val newsList=ArrayList<NewsModel>()
+                //Prepare users List
+                documents.forEach{documentSnapshot->
+                    //document snapshot contains data and metadata
+                    val news=documentSnapshot.toObject(NewsModel::class.java)
+                   //take only if not null
+                    news?.let{
+                        newsList.add(news)
+                    }
+
+                }
+                //Call bloc (Listener)
+                successListener(newsList)
+            }
+            .addOnFailureListener{
+                failureListener(it)
+            }
     }
+
 }

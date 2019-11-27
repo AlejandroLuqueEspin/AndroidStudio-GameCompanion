@@ -1,7 +1,6 @@
 package com.example.myapplicationaaa1.fragment
 
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
 import com.example.myapplicationaaa1.utils.UserDao
@@ -20,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_profile.passwordEditText
 import kotlinx.android.synthetic.main.fragment_profile.registerButton
 
 
-class LoginActivity_Fragment : Fragment() {
+class Login_Fragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
@@ -66,7 +63,7 @@ class LoginActivity_Fragment : Fragment() {
             LogIn.visibility=View.GONE
 
             //Change fragment
-            val newFragment= ProfileActivity_Fragment()
+            val newFragment= Profile_Fragment()
             val fragmentTransaction =activity?.supportFragmentManager?.beginTransaction()
             fragmentTransaction?.replace(R.id.fragmentContainer,newFragment)
             fragmentTransaction?.commit()

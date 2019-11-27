@@ -3,7 +3,7 @@ package com.example.myapplicationaaa1.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplicationaaa1.R
-import com.example.myapplicationaaa1.fragment.LoginActivity_Fragment
+import com.example.myapplicationaaa1.fragment.Login_Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Para inicar el gragmentlayout con algo al inicio
-        val profileFragment= LoginActivity_Fragment()
+        val profileFragment= Login_Fragment()
         val fragmentTransaction =supportFragmentManager.beginTransaction()
         fragmentTransaction.add(fragmentContainer.id,profileFragment)
         fragmentTransaction.commit()
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.chat ->{}
                 R.id.home ->{}
                 R.id.profile ->{
-                    val profileFragment= LoginActivity_Fragment()
+                    val profileFragment= Login_Fragment()
                     val fragmentTransaction =supportFragmentManager.beginTransaction()
                     fragmentTransaction.replace(fragmentContainer.id,profileFragment)
                     fragmentTransaction.commit()
