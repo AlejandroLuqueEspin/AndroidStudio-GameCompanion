@@ -12,9 +12,9 @@ import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
 import com.example.myapplicationaaa1.utils.UserDao
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.passwordEditText
-import kotlinx.android.synthetic.main.fragment_profile.registerButton
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.passwordEditText
+import kotlinx.android.synthetic.main.fragment_login.registerButton
 
 
 class Login_Fragment : Fragment() {
@@ -28,7 +28,7 @@ class Login_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
         ): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_profile, container, false)
+        val view: View = inflater!!.inflate(R.layout.fragment_login, container, false)
 
         return view;
     }
@@ -90,10 +90,15 @@ class Login_Fragment : Fragment() {
                 //check en la base de datos
                 val auth=FirebaseAuth.getInstance()
                 auth.signInWithEmailAndPassword(email,password)
-
-                auth.currentUser?.uid?.let {userID->
-                    getUser(userID)
+                    .addOnCompleteListener{
+//                    auth.currentUser?.uid?.let {userID->
+//                        getUser(userID)
+//                    }
+                    UpdateUI()
+                }.addOnFailureListener{
+                    Toast.makeText(context, "Error with sing in", Toast.LENGTH_LONG).show()
                 }
+
 
             }
         }
@@ -119,7 +124,6 @@ class Login_Fragment : Fragment() {
         UserDao().get (userId = userId,
             successListener ={
 
-                UpdateUI()
 //                userConsulted->
 ////                userConsulted.let {
 ////                    it?.password?.let {password->
