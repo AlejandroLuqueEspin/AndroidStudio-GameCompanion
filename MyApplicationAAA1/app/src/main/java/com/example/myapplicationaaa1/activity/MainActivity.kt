@@ -1,9 +1,11 @@
 package com.example.myapplicationaaa1.activity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.fragment.Login_Fragment
+import com.example.myapplicationaaa1.fragment.News_Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,7 +25,12 @@ class MainActivity : AppCompatActivity() {
             menuItem->
             when(menuItem.itemId){
                 R.id.chat ->{}
-                R.id.home ->{}
+                R.id.home ->{
+                    val newsFragment= News_Fragment()
+                    val fragmentTransactionNews =supportFragmentManager.beginTransaction()
+                    fragmentTransactionNews.replace(fragmentContainer.id,newsFragment)
+                    fragmentTransactionNews.commit()
+                }
                 R.id.profile ->{
                     val profileFragment= Login_Fragment()
                     val fragmentTransaction =supportFragmentManager.beginTransaction()

@@ -39,7 +39,7 @@ class NewsAdapter(var listOfNews: ArrayList<NewsModel>) : RecyclerView.Adapter<N
     override fun onBindViewHolder(holder: NewsAdapter.ViewHolder, position: Int) {
         val news = listOfNews[position]
 
-        holder.username.text = news.textPosted
+        holder.username.text = news.userName
         holder.textPosted.text = news.textPosted
         // 1 - Download image from URL
         // 2 - Cache Image

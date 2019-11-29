@@ -7,7 +7,7 @@ data class NewsList(
 
 data class NewsModel(
 
-    var textPosted: String?,
+    var textPosted: String?=null,
     val imageUserUrl: String? = null,
     val userName: String?=null
 
