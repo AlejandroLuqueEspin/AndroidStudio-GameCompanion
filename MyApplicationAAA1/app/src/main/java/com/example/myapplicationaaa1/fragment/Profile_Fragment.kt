@@ -1,5 +1,7 @@
 package com.example.myapplicationaaa1.fragment
 
+import android.content.Context
+import android.content.SharedPreferences
 import kotlinx.android.synthetic.main.fragment_profileuser.*
 
 import android.os.Bundle
@@ -30,18 +32,15 @@ class Profile_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         logoutButton.setOnClickListener()
         {
             if (FirebaseAuth.getInstance().currentUser != null)
             {
                 FirebaseAuth.getInstance().signOut();
+                UpdateUI()
+
             }
         }
-
-
-        UpdateUI()
     }
 
     private fun UpdateUI(){
@@ -53,6 +52,22 @@ class Profile_Fragment : Fragment() {
             fragmentTransaction?.commit()
         }
     }
+
+
+    private fun SharedPreferencesFunction(){
+        //GET USER LOCALLY
+        val username =requireContext()
+            .getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("username",null)
+
+
+        userNameView.text=username
+    }
+
+
+
+
+
+
 }
 
 

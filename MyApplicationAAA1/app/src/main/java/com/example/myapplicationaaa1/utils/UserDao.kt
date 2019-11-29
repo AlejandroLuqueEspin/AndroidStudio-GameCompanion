@@ -43,7 +43,6 @@ class UserDao {
             FirebaseFirestore.getInstance()
                 .collection("users")
                 .document(userID)
-                //PREGUNTAR COMO SE FUNCIONA
                 .set(user)
                 //ON SUCCESS
                 .addOnSuccessListener {documentSnapshot->
