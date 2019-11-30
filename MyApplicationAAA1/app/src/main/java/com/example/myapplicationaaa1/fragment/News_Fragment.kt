@@ -13,6 +13,9 @@ import com.example.myapplicationaaa1.model.NewsList
 import com.example.myapplicationaaa1.model.NewsModel
 import com.example.myapplicationaaa1.utils.NewsAdapter
 import com.example.myapplicationaaa1.utils.UserDao
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_news.*
@@ -20,11 +23,18 @@ import kotlinx.android.synthetic.main.item_news.*
 
 class News_Fragment : Fragment() {
 
+    lateinit var mAdView : AdView
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.fragment_news)
 
-        // READ DB AND STORE THE INFO IN NEWSLIST
+        //ADD
+        mAdView = adView
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+        //******************
 
         UserDao().getAllPosts(
             successListener = {
