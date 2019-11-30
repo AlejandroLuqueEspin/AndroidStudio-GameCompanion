@@ -89,28 +89,39 @@ class Login_Fragment : Fragment() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
                         //SHARED_PREFERENCES
-//                        auth.currentUser?.uid?.let { userID ->
-//                            UserDao().get(userId = userID, successListener = {
-//                                it?.userName?.let {
-//                                    requireContext().getSharedPreferences(
-//                                        "userProfile",
-//                                        Context.MODE_PRIVATE
-//                                    ).edit().putString("username", it).apply()
-//                                }
-//
-//                            }, failureListener = {
-//
-//                            })
-//                        }
+                        FirebaseAuth.getInstance().currentUser?.uid?.let { userID ->
+                            UserDao().get(userId = userID, successListener = {
+                                if (it != null) {
+                                    this.getActivity()?.let { it2 ->
+                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                            .putString("username", it.userName).apply()
+                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                            .putString("password", it.password).apply()
+                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                            .putString("email", it.email).apply()
 
-                        //SAVE LOCALLY
-                        UpdateUI()
+                                        //Primero pungo a null el user url por si habia uno guardado y el nuevo no tiene user url, aunque siempre se sobreescribirá con algo
+                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                            .putString("image_url", null).apply()
+                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                            .putString("image_url", it.url).apply()
+
+                                        UpdateUI()
+                                    }
+                                }
+
+                            }, failureListener = {
+
+                            })
+                        }
                     }.addOnFailureListener {
                         Toast.makeText(context, "Error with sing in", Toast.LENGTH_LONG).show()
                     }
 
 
             }
+
+
         }
 
     }
@@ -137,16 +148,6 @@ class Login_Fragment : Fragment() {
     private fun getUser(userId: String) {
         UserDao().get(userId = userId,
             successListener = {
-
-                //                userConsulted->
-////                userConsulted.let {
-////                    it?.password?.let {password->
-////                        passwordEditText.text=password
-////                    }
-////                    it?.email?.let {email->
-////                        emailLoginEditText.text=email
-////                    }
-////                }
 
                 Toast.makeText(
                     context,

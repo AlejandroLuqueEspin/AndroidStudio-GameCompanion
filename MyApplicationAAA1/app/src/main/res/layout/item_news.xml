@@ -4,32 +4,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:orientation="horizontal">
-    <ImageView
-            android:id="@+id/userImageView"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:src="@drawable/ic_account_circle_24px"/>
+        android:orientation="vertical">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-        <TextView
-                android:id="@+id/userNameView"
-                android:layout_width="wrap_content"
+        <ImageView
+                android:id="@+id/userImageView"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_account_circle_24px" />
+
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GeneratedUserOfGameCompanion"
-                android:textStyle="bold" />
-        <TextView
-                android:id="@+id/textPosted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TLorem ipsum dolor sit amet consectetur adipiscing, elit nam rhoncus dis cras libero sollicitudin, porta congue justo fusce non. A cum auctor magnis ridiculus egestas placerat lacinia lacus mus, suspendisse nulla semper volutpat ad leo convallis dui lectus, natoque faucibus orci cubilia tempor velit nec dis. Interdum mollis massa imperdiet primis dictumst donec pellentesque condimentum, viverra fames a sodales ultricies blandit sociis sagittis, rutrum in tempor parturient ligula pretium conubia.
-                ." />
+                android:layout_marginStart="16dp"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/userNameView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GeneratedUserOfGameCompanion"
+                    android:textStyle="bold" />
+
+            <TextView
+                    android:id="@+id/textPosted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TLorem ipsum dolor sit amet consectetur adipiscing, elit nam rhoncus dis cras libero sollicitudin, porta congue justo fusce non. A cum auctor magnis ridiculus egestas placerat lacinia lacus mus, suspendisse nulla semper volutpat ad leo convallis dui lectus, natoque faucibus orci cubilia tempor velit nec dis. Interdum mollis massa imperdiet primis dictumst donec pellentesque condimentum, viverra fames a sodales ultricies blandit sociis sagittis, rutrum in tempor parturient ligula pretium conubia." />
+
+
+        </LinearLayout>
+
+
+
 
     </LinearLayout>
-
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5sp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/white" />
 </LinearLayout>
