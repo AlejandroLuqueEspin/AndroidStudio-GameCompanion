@@ -59,7 +59,7 @@ class Profile_Fragment : Fragment() {
         val username = requireContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("username", null)
         val password = requireContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("password", null)
         val email = requireContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("email", null)
-        val url = requireContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("url", null)
+        val url = requireContext().getSharedPreferences("userProfile", Context.MODE_PRIVATE).getString("image_url", null)
 
         userNameView.text = username
         userPasswordView.text = password

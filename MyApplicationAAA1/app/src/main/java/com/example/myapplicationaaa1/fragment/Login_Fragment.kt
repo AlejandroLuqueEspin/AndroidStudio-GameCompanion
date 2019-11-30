@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.passwordEditText
 import kotlinx.android.synthetic.main.fragment_login.registerButton
+import kotlinx.android.synthetic.main.fragment_news.*
 
 
 class Login_Fragment : Fragment() {
@@ -36,6 +38,10 @@ class Login_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val progressBar: ProgressBar =progressBar2
+//
+//        if(progressBar!=null)
+        progressBar.visibility=View.GONE
         registerButton.visibility = View.VISIBLE
         LogIn.visibility = View.VISIBLE
 
@@ -82,6 +88,8 @@ class Login_Fragment : Fragment() {
             Toast.makeText(context, "Please Enter Password", Toast.LENGTH_LONG).show()
             return
         } else { //Progress bar
+            progressBar.visibility=View.VISIBLE
+
             //Login aND INIT
             if (FirebaseAuth.getInstance().currentUser == null) {//no hay usera logeado
                 //check en la base de datos
@@ -99,12 +107,9 @@ class Login_Fragment : Fragment() {
                                             .putString("password", it.password).apply()
                                         it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
                                             .putString("email", it.email).apply()
-
-                                        //Primero pungo a null el user url por si habia uno guardado y el nuevo no tiene user url, aunque siempre se sobreescribirá con algo
-                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
-                                            .putString("image_url", null).apply()
                                         it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
                                             .putString("image_url", it.url).apply()
+                                        progressBar.visibility=View.GONE
 
                                         UpdateUI()
                                     }

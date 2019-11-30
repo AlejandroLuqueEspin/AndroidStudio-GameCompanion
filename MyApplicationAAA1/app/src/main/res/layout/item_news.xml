@@ -36,11 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TLorem ipsum dolor sit amet consectetur adipiscing, elit nam rhoncus dis cras libero sollicitudin, porta congue justo fusce non. A cum auctor magnis ridiculus egestas placerat lacinia lacus mus, suspendisse nulla semper volutpat ad leo convallis dui lectus, natoque faucibus orci cubilia tempor velit nec dis. Interdum mollis massa imperdiet primis dictumst donec pellentesque condimentum, viverra fames a sodales ultricies blandit sociis sagittis, rutrum in tempor parturient ligula pretium conubia." />
-
-
         </LinearLayout>
-
-
 
 
     </LinearLayout>
@@ -50,4 +46,6 @@
             android:layout_marginTop="5sp"
             android:layout_gravity="bottom"
             android:background="@android:color/white" />
+
+
 </LinearLayout>

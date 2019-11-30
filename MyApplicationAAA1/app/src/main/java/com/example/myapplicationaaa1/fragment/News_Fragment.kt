@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.example.myapplicationaaa1.utils.UserDao
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.item_news.*
 
 class News_Fragment : Fragment() {
 
@@ -26,6 +28,11 @@ class News_Fragment : Fragment() {
 
         UserDao().getAllPosts(
             successListener = {
+                val progressBar:ProgressBar=progressBar2
+
+                if(progressBar!=null)
+                    progressBar.visibility=View.GONE
+
                 var  newsListModel: NewsList=NewsList(it)
                 // Get List of news
                 val news: ArrayList<NewsModel>? = newsListModel.news
