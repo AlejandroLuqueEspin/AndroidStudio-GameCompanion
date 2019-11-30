@@ -121,6 +121,8 @@ class Login_Fragment : Fragment() {
                         }
                     }.addOnFailureListener {
                         Toast.makeText(context, "Error with sing in", Toast.LENGTH_LONG).show()
+                        progressBar.visibility=View.GONE
+
                     }
 
 
