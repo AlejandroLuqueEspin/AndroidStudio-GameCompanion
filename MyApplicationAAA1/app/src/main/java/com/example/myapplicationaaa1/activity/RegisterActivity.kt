@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.model.UserModel
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_register.*
@@ -21,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
 
         registerButton.setOnClickListener{
             createNewUser()
+            FirebaseAnalytics.getInstance(this).logEvent("Register_Try",null)
+
         }
 
     }
@@ -74,6 +77,8 @@ class RegisterActivity : AppCompatActivity() {
                                 .addOnSuccessListener {documentReference ->
                                     Toast.makeText(this,"Register Complete", Toast.LENGTH_LONG).show()
                                     progressBar3.visibility= View.GONE
+                                    FirebaseAnalytics.getInstance(this).logEvent("Register_Complete",null)
+
 
 
                                 }.addOnFailureListener { e ->

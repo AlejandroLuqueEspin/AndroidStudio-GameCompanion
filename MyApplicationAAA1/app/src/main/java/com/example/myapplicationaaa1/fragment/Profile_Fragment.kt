@@ -26,6 +26,7 @@ import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.utils.UserDao
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.ContentViewCallback
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -70,6 +71,8 @@ class Profile_Fragment : Fragment() {
         imageProfile.setOnClickListener() {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
+            FirebaseAnalytics.getInstance(this.requireActivity()).logEvent("Take_photo",null)
+
         }
     }
 
@@ -147,6 +150,8 @@ class Profile_Fragment : Fragment() {
                                 .collection("Users")
                                 .document(uid)
                                 .update("url", task.toString())
+
+
                         }
 
 
