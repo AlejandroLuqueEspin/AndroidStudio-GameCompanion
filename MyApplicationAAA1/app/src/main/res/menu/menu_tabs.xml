@@ -2,8 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:id="@+id/profile" android:title="@string/tab_profile" android:icon="@drawable/icon_profile"/>
-    <item android:id="@+id/home" android:title="@string/tab_home" android:icon="@drawable/icon_home"/>
-    <item android:id="@+id/chat" android:title="@string/tab_chat" android:icon="@drawable/icon_chat"/>
+    <item
+            android:id="@+id/profile"
+            android:icon="@drawable/icon_profile"
+            android:title="@string/tab_profile" />
+    <item
+            android:id="@+id/home"
+            android:icon="@drawable/icon_home"
+            android:title="@string/tab_home" />
+    <item
+            android:id="@+id/chat"
+            android:icon="@drawable/icon_chat"
+            android:title="@string/tab_chat" />
 
 </menu>
