@@ -5,7 +5,28 @@
     <string name="tab_home">Home</string>
     <string name="tab_chat">Chat</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    //Register activity
     <string name="register_button">Register</string>
+
+    //Login activity
+    <string name="login_button">Log In</string>
+
+    //Profile activity
     <string name="logout_button">Log Out</string>
+    <string name="onlineFeatures_switch">Show Online Features</string>
+
+    //User Edit Text
+    <string name="email_editText">Email Address</string>
+    <string name="username_editText">Username</string>
+    <string name="password_editText">Password</string>
+
+
+
+
+
+
+
+
+
+
 </resources>

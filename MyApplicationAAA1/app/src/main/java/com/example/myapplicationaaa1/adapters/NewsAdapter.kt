@@ -1,4 +1,4 @@
-package com.example.myapplicationaaa1.utils
+package com.example.myapplicationaaa1.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -29,14 +29,14 @@ class NewsAdapter(var listOfNews: ArrayList<NewsModel>) : RecyclerView.Adapter<N
     }
 
     // Create item_joke View
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val item: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return ViewHolder(item)
     }
 
     // Update Items
-    override fun onBindViewHolder(holder: NewsAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val news = listOfNews[position]
 
         holder.username.text = news.userName

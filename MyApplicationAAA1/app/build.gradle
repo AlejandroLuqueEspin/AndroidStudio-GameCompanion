@@ -45,11 +45,15 @@ dependencies {
     //Fire base Fire store
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
     //Auth Fire base
+    implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     //Data Base
     implementation 'com.google.firebase:firebase-database:19.2.0'
     //Data Base Storage
     implementation 'com.google.firebase:firebase-storage:19.1.0'
+
+    //play service auth
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
     //Material Libreria
     implementation 'com.google.android.material:material:1.2.0-alpha02'

@@ -12,12 +12,23 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
+import com.example.myapplicationaaa1.model.UserModel
 import com.example.myapplicationaaa1.utils.UserDao
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.passwordEditText
 import kotlinx.android.synthetic.main.fragment_login.registerButton
-import kotlinx.android.synthetic.main.fragment_news.*
+
 
 
 class Login_Fragment : Fragment() {
@@ -41,7 +52,7 @@ class Login_Fragment : Fragment() {
 //        val progressBar: ProgressBar =progressBar2
 //
 //        if(progressBar!=null)
-        progressBar.visibility=View.GONE
+        progressBar.visibility = View.GONE
         registerButton.visibility = View.VISIBLE
         LogIn.visibility = View.VISIBLE
 
@@ -54,6 +65,10 @@ class Login_Fragment : Fragment() {
                 startActivity(Intent(requireContext(), RegisterActivity::class.java))
             UpdateUI()
 
+        }
+        google_button.setOnClickListener {
+            configureGoogleSignIn()
+            signIn()
         }
 
         UpdateUI()
@@ -88,7 +103,7 @@ class Login_Fragment : Fragment() {
             Toast.makeText(context, "Please Enter Password", Toast.LENGTH_LONG).show()
             return
         } else { //Progress bar
-            progressBar.visibility=View.VISIBLE
+            progressBar.visibility = View.VISIBLE
 
             //Login aND INIT
             if (FirebaseAuth.getInstance().currentUser == null) {//no hay usera logeado
@@ -101,15 +116,27 @@ class Login_Fragment : Fragment() {
                             UserDao().get(userId = userID, successListener = {
                                 if (it != null) {
                                     this.getActivity()?.let { it2 ->
-                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
                                             .putString("username", it.userName).apply()
-                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
                                             .putString("password", it.password).apply()
-                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
                                             .putString("email", it.email).apply()
-                                        it2.getSharedPreferences("userProfile", Context.MODE_PRIVATE).edit()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
                                             .putString("image_url", it.url).apply()
-                                        progressBar.visibility=View.GONE
+                                        progressBar.visibility = View.GONE
 
                                         UpdateUI()
                                     }
@@ -121,7 +148,7 @@ class Login_Fragment : Fragment() {
                         }
                     }.addOnFailureListener {
                         Toast.makeText(context, "Error with sing in", Toast.LENGTH_LONG).show()
-                        progressBar.visibility=View.GONE
+                        progressBar.visibility = View.GONE
 
                     }
 
@@ -174,10 +201,133 @@ class Login_Fragment : Fragment() {
             })
     }
 
-//    private fun updateUser(){
-//        UserDao().update(
-//
-//        )
-//    }
 
+    val RC_SIGN_IN: Int = 1
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var mGoogleSignInOptions: GoogleSignInOptions
+    //****************************
+
+    private fun configureGoogleSignIn() {
+        mGoogleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        activity?.let {
+            mGoogleSignInClient = GoogleSignIn.getClient(it, mGoogleSignInOptions)
+
+        }
+    }
+
+    private fun signIn() {
+        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                account?.let { firebaseAuthWithGoogle(it) }
+            } catch (e: ApiException) {
+                Toast.makeText(context, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+        progressBar.visibility = View.VISIBLE
+
+        lateinit var firebaseAuth: FirebaseAuth
+        firebaseAuth = FirebaseAuth.getInstance()
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Toast.makeText(context, "Google sign Complete :)", Toast.LENGTH_LONG).show()
+
+                val acct = GoogleSignIn.getLastSignedInAccount(activity!!)
+
+                val auth = FirebaseAuth.getInstance()
+                val user = auth.currentUser
+                if (acct != null) {
+                    //Aqui???Register in FiraStore
+                    val dataBase = FirebaseFirestore.getInstance();
+                    val newUser = UserModel(
+                        userID = "",
+                        //stroe this into a constant
+                        userName = acct.displayName,
+                        url = acct.photoUrl.toString(),
+                        password = "Sign In With Google",
+                        email = acct.email
+                    )
+                    if (user !== null) {
+                        dataBase
+                            .collection("Users")
+                            .document(user.uid)
+                            .set(newUser)
+                            .addOnSuccessListener { documentReference ->
+                                Toast.makeText(context!!, "Register Complete", Toast.LENGTH_LONG)
+                                    .show()
+                                progressBar.visibility = View.GONE
+                                activity?.let { it1 ->
+                                    FirebaseAnalytics.getInstance(it1)
+                                        .logEvent("Register_Complete", null)
+                                }
+
+
+                            }.addOnFailureListener { e ->
+                                Toast.makeText(context!!, "Error, try again later", Toast.LENGTH_LONG)
+                                    .show()
+                                progressBar.visibility = View.GONE
+
+                            }
+                        //SHARED_PREFERENCES
+                        FirebaseAuth.getInstance().currentUser?.uid?.let { userID ->
+                            UserDao().get(userId = userID, successListener = {
+                                if (it != null) {
+                                    this.getActivity()?.let { it2 ->
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
+                                            .putString("username", it.userName).apply()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
+                                            .putString("password", it.password).apply()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
+                                            .putString("email", it.email).apply()
+                                        it2.getSharedPreferences(
+                                            "userProfile",
+                                            Context.MODE_PRIVATE
+                                        ).edit()
+                                            .putString("image_url", it.url).apply()
+                                        progressBar.visibility = View.GONE
+
+                                        UpdateUI()
+                                    }
+                                }
+
+                            }, failureListener = {
+
+                            })
+                        }
+                    }
+                }
+
+
+            } else {
+                Toast.makeText(context, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+                progressBar.visibility = View.GONE
+
+            }
+        }
+
+
+    }
 }

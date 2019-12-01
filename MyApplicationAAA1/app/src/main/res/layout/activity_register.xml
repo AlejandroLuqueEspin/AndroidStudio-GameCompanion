@@ -27,7 +27,7 @@
             android:layout_marginEnd="20dp"
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_user"
-            android:hint="Username"
+            android:hint="@string/username_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edit_background"
@@ -39,7 +39,7 @@
             android:layout_marginTop="20dp"
             android:drawablePadding="10dp"
             android:drawableStart="@drawable/ic_user"
-            android:hint="Email Adress"
+            android:hint="@string/email_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/login_edit_background"
@@ -51,7 +51,7 @@
                 android:layout_marginTop="20dp"
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/ic_password"
-                android:hint="Password"
+                android:hint="@string/password_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edit_background"
@@ -72,10 +72,24 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/login_button_background"
-                android:text="Register"
+                android:text="@string/register_button"
                 android:textAllCaps="false"
                 android:textSize="21sp"
                 />
+
+<!--        <com.google.android.gms.common.SignInButton-->
+<!--                android:id="@+id/google_button"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:padding="8dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"/>-->
 
 
 

@@ -11,15 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.model.NewsList
 import com.example.myapplicationaaa1.model.NewsModel
-import com.example.myapplicationaaa1.utils.NewsAdapter
+import com.example.myapplicationaaa1.adapters.NewsAdapter
 import com.example.myapplicationaaa1.utils.UserDao
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
 import com.google.firebase.auth.FirebaseAuth
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_news.*
-import kotlinx.android.synthetic.main.item_news.*
 
 class News_Fragment : Fragment() {
 
@@ -47,7 +44,8 @@ class News_Fragment : Fragment() {
                 // Get List of news
                 val news: ArrayList<NewsModel>? = newsListModel.news
                 // Configure Recyclerview
-                recyclerView.adapter = NewsAdapter(ArrayList(news.orEmpty()))
+                recyclerView.adapter =
+                    NewsAdapter(ArrayList(news.orEmpty()))
                 recyclerView.layoutManager = LinearLayoutManager(context)
             },
             failureListener={

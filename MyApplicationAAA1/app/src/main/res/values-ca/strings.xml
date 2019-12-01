@@ -5,4 +5,22 @@
     <string name="tab_home">Casa</string>
     <string name="tab_chat">Chat</string>
 
+    //Register activity
+    <string name="register_button">Registrar-se</string>
+
+    //Login activity
+    <string name="login_button">Inicia Sessió</string>
+
+    //Profile activity
+    <string name="logout_button">Tancar Sessió</string>
+    <string name="onlineFeatures_switch">Mostrar-se Online</string>
+
+
+    //User Edit Text
+    <string name="email_editText">Adreça Email</string>
+    <string name="username_editText">Nom Usuari</string>
+    <string name="password_editText">Contrasenya</string>
+
+
+
 </resources>
