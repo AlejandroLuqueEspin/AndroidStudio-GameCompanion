@@ -1,11 +1,11 @@
 package com.example.myapplicationaaa1.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.fragment.Login_Fragment
 import com.example.myapplicationaaa1.fragment.News_Fragment
+import com.example.myapplicationaaa1.fragment.Streams_Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -46,6 +46,15 @@ class MainActivity : AppCompatActivity() {
                     FirebaseAnalytics.getInstance(this).logEvent("PROFILE_TabClicked",null)
 
                     val profileFragment= Login_Fragment()
+                    val fragmentTransaction =supportFragmentManager.beginTransaction()
+                    fragmentTransaction.replace(fragmentContainer.id,profileFragment)
+                    fragmentTransaction.commit()
+
+                }
+                R.id.streams ->{
+                    FirebaseAnalytics.getInstance(this).logEvent("PROFILE_TabClicked",null)
+
+                    val profileFragment= Streams_Fragment()
                     val fragmentTransaction =supportFragmentManager.beginTransaction()
                     fragmentTransaction.replace(fragmentContainer.id,profileFragment)
                     fragmentTransaction.commit()
