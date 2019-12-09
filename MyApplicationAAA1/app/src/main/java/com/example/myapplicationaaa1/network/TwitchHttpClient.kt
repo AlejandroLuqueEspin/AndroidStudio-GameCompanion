@@ -1,17 +1,15 @@
 package com.example.myapplicationaaa1.network
-
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RickAndMortyHttpClient {
+class TwitchHttpClient {
     companion object{
         //Http Client
-        private val retrofit=Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/")
+        private val httpClient=Retrofit.Builder()
+            .baseUrl("https://api.twitch.tv/helix/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+        val service= httpClient.create(TwitchApi::class.java)
 
-        //Rick And Morty Service
-        val service= retrofit.create<RickAndMortyApi>(RickAndMortyApi::class.java)
     }
 }

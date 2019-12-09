@@ -60,6 +60,7 @@ dependencies {
 
     //Retrofit http
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.1'//gson converter
 
     apply plugin: 'com.google.gms.google-services'
     implementation 'androidx.fragment:fragment-ktx:1.1.0'
