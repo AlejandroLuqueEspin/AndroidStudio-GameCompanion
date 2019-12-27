@@ -1,6 +1,5 @@
 package com.example.myapplicationaaa1.activity
 
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplicationaaa1.R
