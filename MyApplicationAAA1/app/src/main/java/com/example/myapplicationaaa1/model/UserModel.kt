@@ -8,8 +8,7 @@ data class UserModel(
     val password: String? = null,
     val url: String? = null,
     val email: String? = null
-    )
-{
+) {
 
 
 }

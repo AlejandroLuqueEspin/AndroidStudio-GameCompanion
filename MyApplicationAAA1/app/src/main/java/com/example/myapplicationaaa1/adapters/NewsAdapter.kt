@@ -15,7 +15,8 @@ import kotlinx.android.synthetic.main.item_news.view.*
  * Created by alex on 2019-10-11.
  */
 
-class NewsAdapter(var listOfNews: ArrayList<NewsModel>) : RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+class NewsAdapter(var listOfNews: ArrayList<NewsModel>) :
+    RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 
     class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
 

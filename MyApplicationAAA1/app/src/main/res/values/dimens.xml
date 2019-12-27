@@ -2,9 +2,27 @@
 <resources>
     <dimen name="button_item_height">48dp</dimen>
 
-    <dimen name="margin_medium">16dp</dimen>
+    //Margins
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="marginText_medium">10dp</dimen>
+    <dimen name="margin_big">50dp</dimen>
+    <dimen name="margin_extra">50dp</dimen>
 
+
+    //Text
     <dimen name="textsize_medium">14dp</dimen>
+
+    //Lines
+    <dimen name="margin_line">5dp</dimen>
+
+    Photo
+    <dimen name="photo_medium">72dp</dimen>
+    <dimen name="photo_big">100dp</dimen>
+    <dimen name="photo_extra">150dp</dimen>
+    ProgressBar
+    <dimen name="progressbar_medium">100dp</dimen>
+    //Google
+    <dimen name="signIn_google_standard">8dp</dimen>
 
 </resources>

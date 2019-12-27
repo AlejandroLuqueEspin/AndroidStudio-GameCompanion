@@ -9,9 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationaaa1.R
+import com.example.myapplicationaaa1.adapters.NewsAdapter
 import com.example.myapplicationaaa1.model.NewsList
 import com.example.myapplicationaaa1.model.NewsModel
-import com.example.myapplicationaaa1.adapters.NewsAdapter
 import com.example.myapplicationaaa1.utils.UserDao
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_news.*
 
 class News_Fragment : Fragment() {
 
-    lateinit var mAdView : AdView
+    lateinit var mAdView: AdView
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,12 +35,12 @@ class News_Fragment : Fragment() {
 
         UserDao().getAllPosts(
             successListener = {
-                val progressBar:ProgressBar=progressBar2
+                val progressBar: ProgressBar = progressBar2
 
-                if(progressBar!=null)
-                    progressBar.visibility=View.GONE
+                if (progressBar != null)
+                    progressBar.visibility = View.GONE
 
-                var  newsListModel: NewsList=NewsList(it)
+                var newsListModel: NewsList = NewsList(it)
                 // Get List of news
                 val news: ArrayList<NewsModel>? = newsListModel.news
                 // Configure Recyclerview
@@ -48,8 +48,12 @@ class News_Fragment : Fragment() {
                     NewsAdapter(ArrayList(news.orEmpty()))
                 recyclerView.layoutManager = LinearLayoutManager(context)
             },
-            failureListener={
-                Toast.makeText(context, "No se han encontrado posts pruebalo de nuevo mas tarde", Toast.LENGTH_LONG).show()
+            failureListener = {
+                Toast.makeText(
+                    context,
+                    "No se han encontrado posts pruebalo de nuevo mas tarde",
+                    Toast.LENGTH_LONG
+                ).show()
             }
         )
 
@@ -65,19 +69,16 @@ class News_Fragment : Fragment() {
         return view;
     }
 
-    private fun UpdateUI(){
-        if(FirebaseAuth.getInstance().currentUser==null){
-            Toast.makeText(context, "Inicie sesion para ver todo el contenido", Toast.LENGTH_LONG).show()
+    private fun UpdateUI() {
+        if (FirebaseAuth.getInstance().currentUser == null) {
+            Toast.makeText(context, "Inicie sesion para ver todo el contenido", Toast.LENGTH_LONG)
+                .show()
 
-        }
-        else
-        {
+        } else {
 
         }
 
     }
-
-
 
 
 }

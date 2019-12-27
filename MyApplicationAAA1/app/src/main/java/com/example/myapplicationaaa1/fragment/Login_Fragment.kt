@@ -4,12 +4,11 @@ package com.example.myapplicationaaa1.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.activity.RegisterActivity
 import com.example.myapplicationaaa1.model.UserModel
@@ -24,11 +23,7 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.fragment_login.*
-import kotlinx.android.synthetic.main.fragment_login.passwordEditText
-import kotlinx.android.synthetic.main.fragment_login.registerButton
-
 
 
 class Login_Fragment : Fragment() {
@@ -267,9 +262,6 @@ class Login_Fragment : Fragment() {
                             .document(user.uid)
                             .set(newUser)
                             .addOnSuccessListener { documentReference ->
-                                Toast.makeText(context!!, "Register Complete", Toast.LENGTH_LONG)
-                                    .show()
-                                progressBar.visibility = View.GONE
                                 activity?.let { it1 ->
                                     FirebaseAnalytics.getInstance(it1)
                                         .logEvent("Register_Complete", null)
@@ -277,7 +269,11 @@ class Login_Fragment : Fragment() {
 
 
                             }.addOnFailureListener { e ->
-                                Toast.makeText(context!!, "Error, try again later", Toast.LENGTH_LONG)
+                                Toast.makeText(
+                                    context!!,
+                                    "Error, try again later",
+                                    Toast.LENGTH_LONG
+                                )
                                     .show()
                                 progressBar.visibility = View.GONE
 

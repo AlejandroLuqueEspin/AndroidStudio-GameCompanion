@@ -1,9 +1,9 @@
 package com.example.myapplicationaaa1.utils
 
-class Constants{
+class Constants {
 
     companion object {
-        val COLECTION_USERS="users"
+        val COLECTION_USERS = "users"
     }
 }
 

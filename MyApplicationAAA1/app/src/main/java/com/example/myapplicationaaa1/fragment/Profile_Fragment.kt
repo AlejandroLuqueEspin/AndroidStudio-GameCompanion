@@ -1,40 +1,27 @@
 package com.example.myapplicationaaa1.fragment
 
 import android.app.Activity
-import android.app.Activity.RESULT_OK
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import java.util.UUID;
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.checkSelfPermission
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.myapplicationaaa1.R
-import com.example.myapplicationaaa1.utils.UserDao
-import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.ContentViewCallback
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_profileuser.*
 import java.io.ByteArrayOutputStream
-import java.net.URL
-import java.util.jar.Manifest
+import java.util.*
 
 
 private val REQUEST_IMAGE_CAPTURE = 1;
@@ -71,7 +58,7 @@ class Profile_Fragment : Fragment() {
         imageProfile.setOnClickListener() {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE)
-            FirebaseAnalytics.getInstance(this.requireActivity()).logEvent("Take_photo",null)
+            FirebaseAnalytics.getInstance(this.requireActivity()).logEvent("Take_photo", null)
 
         }
     }
