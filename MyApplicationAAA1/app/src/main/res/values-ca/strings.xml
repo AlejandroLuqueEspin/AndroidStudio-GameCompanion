@@ -28,4 +28,7 @@
     <string name="default_text">Escriu aqui el que vols publicar</string>
     <string name="finish_button">Publicar</string>
     <string name="refresh_button">Actualitza Publicacions</string>
+
+    //DETAIL POST
+    <string name="add_comment_button">Comentar</string>
 </resources>

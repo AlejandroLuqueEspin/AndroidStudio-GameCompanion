@@ -27,6 +27,8 @@
     <string name="default_text">Enter your text post here</string>
     <string name="finish_button">Post</string>
     <string name="refresh_button">Refresh Posts</string>
+    //DETAIL POST
+    <string name="add_comment_button">Comment</string>
 
 
 </resources>

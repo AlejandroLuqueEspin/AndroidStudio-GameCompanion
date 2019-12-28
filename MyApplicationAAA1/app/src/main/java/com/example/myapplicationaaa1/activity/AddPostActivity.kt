@@ -66,46 +66,50 @@ class AddPostActivity : AppCompatActivity() {
             val dataBase =FirebaseFirestore.getInstance()
 
             val newPost= NewsModel(
+                postUID =UUID.randomUUID().toString() ,
+                userUID = FirebaseAuth.getInstance().currentUser?.uid,
                 textPosted = postText,
                 imageUserUrl =applicationContext.getSharedPreferences("userProfile", Context.MODE_PRIVATE)
                 .getString("image_url", null) ,
                 userName = applicationContext.getSharedPreferences("userProfile", Context.MODE_PRIVATE)
                 .getString("username", null))
-            val idPost= UUID.randomUUID().toString()
+            val idPost= newPost.postUID
 
                 FirebaseAuth.getInstance().currentUser?.uid?.let {userUid->
 
-                    dataBase
-                        .collection("Posts")
-                        .document(idPost)
-                        .set(newPost)
-                        .addOnSuccessListener { documentReference ->
+                    if (idPost != null) {
+                        dataBase
+                            .collection("Posts")
+                            .document(idPost)
+                            .set(newPost)
+                            .addOnSuccessListener { documentReference ->
 
-                            dataBase
-                                .collection("Users").document(userUid).collection("posts").document(idPost).set(newPost).addOnSuccessListener {
+                                dataBase
+                                    .collection("Users").document(userUid).collection("posts").document(idPost).set(newPost).addOnSuccessListener {
 
-                                    Toast.makeText(this, "Post Complete", Toast.LENGTH_LONG)
-                                        .show()
-                                    progressBar10.visibility = View.GONE
-                                    this.finish()
-                                }.addOnFailureListener{
-                                    Toast.makeText(
-                                        this,
-                                        "Error, storing the post in user posts",
-                                        Toast.LENGTH_LONG
-                                    ).show()
-                                    progressBar10.visibility = View.GONE
-                                }
+                                        Toast.makeText(this, "Post Complete", Toast.LENGTH_LONG)
+                                            .show()
+                                        progressBar10.visibility = View.GONE
+                                        this.finish()
+                                    }.addOnFailureListener{
+                                        Toast.makeText(
+                                            this,
+                                            "Error, storing the post in user posts",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                        progressBar10.visibility = View.GONE
+                                    }
 
-                        }.addOnFailureListener { e ->
-                            Toast.makeText(
-                                this,
-                                "Error, try again later",
-                                Toast.LENGTH_LONG
-                            ).show()
-                            progressBar10.visibility = View.GONE
+                            }.addOnFailureListener { e ->
+                                Toast.makeText(
+                                    this,
+                                    "Error, try again later",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                progressBar10.visibility = View.GONE
 
-                        }
+                            }
+                    }
             }
 
 

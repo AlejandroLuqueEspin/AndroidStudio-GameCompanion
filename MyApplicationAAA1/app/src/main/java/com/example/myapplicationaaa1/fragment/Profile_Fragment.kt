@@ -140,6 +140,15 @@ class Profile_Fragment : Fragment() {
 
 
                         }
+                        if(activity!=null) {
+                            activity!!.applicationContext.getSharedPreferences(
+                                "userProfile",
+                                Context.MODE_PRIVATE
+                            )?.edit()?.putString(
+                                "image_url",
+                                task.toString()
+                            )?.apply()
+                        }
 
 
                     }.addOnFailureListener {

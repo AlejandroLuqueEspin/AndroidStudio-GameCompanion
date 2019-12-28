@@ -14,6 +14,8 @@
             android:roundIcon="@mipmap/ic_launcher_round_ff"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activity.AddCommentActivity"></activity>
+        <activity android:name=".activity.PostDetailActivity" />
 
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -26,6 +28,7 @@
                 android:theme="@style/LoginPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
