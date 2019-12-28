@@ -6,6 +6,8 @@
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="marginText_medium">10dp</dimen>
+    <dimen name="marginText_extra">150dp</dimen>
+
     <dimen name="margin_big">50dp</dimen>
     <dimen name="margin_extra">50dp</dimen>
 

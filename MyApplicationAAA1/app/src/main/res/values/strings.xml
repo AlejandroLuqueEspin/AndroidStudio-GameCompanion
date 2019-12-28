@@ -20,5 +20,13 @@
     <string name="username_editText">Username</string>
     <string name="password_editText">Password</string>
 
+    //streams
+    <string name="hello_blank_fragment">hello_blank_fragment_test</string>
+
+    //ADD POST
+    <string name="default_text">Enter your text post here</string>
+    <string name="finish_button">Post</string>
+    <string name="refresh_button">Refresh Posts</string>
+
 
 </resources>

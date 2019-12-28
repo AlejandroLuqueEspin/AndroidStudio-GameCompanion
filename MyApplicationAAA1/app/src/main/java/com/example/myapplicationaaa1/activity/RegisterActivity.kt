@@ -58,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                         val user = auth.currentUser
 
                         //Aqui???Register in FiraStore
-                        val dataBase = FirebaseFirestore.getInstance();
+                        val dataBase = FirebaseFirestore.getInstance()
                         val newUser = UserModel(
                             userID = "",
                             //stroe this into a constant
@@ -103,6 +103,7 @@ class RegisterActivity : AppCompatActivity() {
                                             "https://firebasestorage.googleapis.com/v0/b/alejandroluquegamecompanion.appspot.com/o/public%2Fimages%2Favatars%2Fic_ImageProfileDefault-web.png?alt=media&token=82231fc0-1e0d-4ffe-b4ac-f4677ee8e64b"
                                         ).apply()
                                     progressBar3.visibility = View.GONE
+                                    this.finish()
 
                                 }.addOnFailureListener { e ->
                                     Toast.makeText(

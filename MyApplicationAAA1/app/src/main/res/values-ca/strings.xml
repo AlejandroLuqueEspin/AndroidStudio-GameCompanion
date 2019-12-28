@@ -21,5 +21,11 @@
     <string name="username_editText">Nom Usuari</string>
     <string name="password_editText">Contrasenya</string>
 
+    //streams
+    <string name="hello_blank_fragment">hello_blank_fragment_test_catalá</string>
 
+    //ADD POST
+    <string name="default_text">Escriu aqui el que vols publicar</string>
+    <string name="finish_button">Publicar</string>
+    <string name="refresh_button">Actualitza Publicacions</string>
 </resources>

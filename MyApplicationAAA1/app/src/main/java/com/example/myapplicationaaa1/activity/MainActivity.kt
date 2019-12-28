@@ -29,10 +29,6 @@ class MainActivity : AppCompatActivity() {
 //                parametres.putString("tab","chat")
 
             when (menuItem.itemId) {
-                R.id.chat -> {
-                    FirebaseAnalytics.getInstance(this).logEvent("CHAT_TabClicked", null)
-
-                }
                 R.id.home -> {
                     FirebaseAnalytics.getInstance(this).logEvent("HOME_TabClicked", null)
 
