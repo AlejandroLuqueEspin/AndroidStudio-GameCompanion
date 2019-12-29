@@ -57,7 +57,7 @@ class News_Fragment : Fragment() {
             else
                 Toast.makeText(
                     context,
-                    "Inicie sesion antes para acceder a esta función",
+                    "Login before to access this function",
                     Toast.LENGTH_LONG
                 ).show()
         }

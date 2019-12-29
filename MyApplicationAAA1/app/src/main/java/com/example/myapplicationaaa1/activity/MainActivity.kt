@@ -88,11 +88,11 @@ class MainActivity : AppCompatActivity() {
 
                     if(mCurrentLocation==null) {
                         mCurrentLocation = location
-                        showNotification("Has Iniciado la App", "Guardando la localizacion")
+                        showNotification("You have started the App", "Saving the location")
                     }
-                    else if(location.altitude!= mCurrentLocation!!.altitude){
+                    else if(location!= mCurrentLocation){
                         mCurrentLocation = location
-                        showNotification("Te has movido?", "Abre la app y mira los ultimos posts")
+                        showNotification("Have you moved?", "Open the app and see the latest posts")
                     }
 
 
