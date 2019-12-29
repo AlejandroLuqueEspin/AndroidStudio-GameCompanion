@@ -8,11 +8,11 @@
 
     <ImageView
             android:id="@+id/imageProfileTwitch"
-            android:layout_width="@dimen/photo_big"
-            android:layout_height="@dimen/photo_big"
+            android:layout_width="165dp"
+            android:layout_height="158dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_extra"
-            android:layout_marginBottom="@dimen/margin_extra"
+            android:layout_marginBottom="@dimen/margin_small"
             android:src="@drawable/ic_account_circle_24px" />
 
 

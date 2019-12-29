@@ -23,6 +23,8 @@
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:background="@drawable/login_edit_background"
+            android:padding="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_medium"
             android:text="@string/onlineFeatures_switch" />
 //**********************************************************
     <TextView

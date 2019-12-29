@@ -4,7 +4,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_small"
         android:orientation="vertical">
 
     <LinearLayout
@@ -12,6 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
+            android:background="@drawable/login_edit_background"
+            android:padding="@dimen/margin_small"
             android:orientation="horizontal">
 
         <ImageView
@@ -45,11 +48,11 @@
     </LinearLayout>
 
     <View
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="1dp"
         android:layout_below="@id/relativelayout00"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="@dimen/margin_line"
+            android:layout_marginStart="65dp"
+        android:layout_marginTop="@dimen/margin_medium"
         android:background="@android:color/white"
      />
 
@@ -61,6 +64,8 @@
             android:background="@android:color/transparent"
             android:layout_marginEnd="@dimen/margin_small"
             android:src="@drawable/ic_cancel_circle"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingEnd="@dimen/margin_small"
             android:contentDescription="TODO" />
 
 </RelativeLayout >

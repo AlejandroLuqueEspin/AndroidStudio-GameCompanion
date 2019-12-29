@@ -42,7 +42,10 @@ class Streams_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        progressBarTwitch.visibility = GONE
+        progressBarTwitch.visibility = VISIBLE
+
+
+        getStreamsTwitch()
 
         streamsSearchButton.setOnClickListener {
             progressBarTwitch.visibility = VISIBLE
@@ -102,13 +105,16 @@ class Streams_Fragment : Fragment() {
                             "Stream Url: https://www.twitch.tv/${stream.username}"
                         )
                     }
+                    if(progressBarTwitch!=null)
                     progressBarTwitch.visibility = GONE
 
 
                     // Configure Recyclerview
+                    if(recyclerViewTwitch!=null){
                     recyclerViewTwitch.adapter = StreamsAdapter(ArrayList(streams.orEmpty()),activity!!.supportFragmentManager,requireContext())
                     recyclerViewTwitch.layoutManager = LinearLayoutManager(context)
 //                    configureOnClickRecyclerView()
+                    }
                 }
             }
 

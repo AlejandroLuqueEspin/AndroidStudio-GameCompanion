@@ -156,10 +156,10 @@ class News_Fragment : Fragment() {
     }
 
     private fun SeePosts() {
+        val progressBar: ProgressBar = progressBar2
 
         UserDao().getAllPosts(
             successListener = {
-                val progressBar: ProgressBar = progressBar2
 
                 if (progressBar != null)
                     progressBar.visibility = View.GONE
@@ -169,9 +169,12 @@ class News_Fragment : Fragment() {
                 news = newsListModel.news
 
                 // Configure Recyclerview
-                recyclerView.adapter = NewsAdapter(ArrayList(news.orEmpty()),activity!!.supportFragmentManager)
-                recyclerView.layoutManager = LinearLayoutManager(context)
-                configureOnClickRecyclerView()
+                if(recyclerView!=null) {
+                    recyclerView.adapter =
+                        NewsAdapter(ArrayList(news.orEmpty()), activity!!.supportFragmentManager)
+                    recyclerView.layoutManager = LinearLayoutManager(context)
+                    configureOnClickRecyclerView()
+                }
 
             },
             failureListener = {
