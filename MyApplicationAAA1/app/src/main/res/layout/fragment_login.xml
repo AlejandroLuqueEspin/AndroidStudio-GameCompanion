@@ -1,97 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerVertical="true"
         android:background="@drawable/login_background"
         android:orientation="vertical"
         tools:context=".activity.RegisterActivity">
 
-
-    <ImageView
-            android:layout_width="@dimen/photo_extra"
-            android:layout_height="@dimen/photo_extra"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:src="@drawable/ic_icon" />
-
-    <EditText
-            android:id="@+id/emailLoginEditText"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_big"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="@string/email_editText"
-            android:padding="@dimen/marginText_medium" />
+            android:orientation="vertical"
+        android:layout_centerInParent="true">
 
-    <EditText
-            android:id="@+id/passwordEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_password"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="@string/password_editText"
-            android:padding="@dimen/marginText_medium" />
+        <ImageView
+                android:layout_width="@dimen/photo_extra"
+                android:layout_height="@dimen/photo_extra"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:src="@drawable/ic_icon" />
 
-    <TextView
-            android:id="@+id/ForgotPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:padding="@dimen/marginText_medium"
-            android:text="Forgot Password ?" />
+        <EditText
+                android:id="@+id/emailLoginEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_big"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="@string/email_editText"
+                android:padding="@dimen/marginText_medium" />
 
-    <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/progressbar_medium"
-            android:gravity="center"
-            android:scaleType="centerInside" />
+        <EditText
+                android:id="@+id/passwordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_password"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="@string/password_editText"
+                android:padding="@dimen/marginText_medium" />
 
-    <Button
-            android:id="@+id/LogIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_button_background"
-            android:text="@string/login_button"
-            android:textAllCaps="false"
-            android:textSize="21sp" />
+        <TextView
+                android:id="@+id/ForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:padding="@dimen/marginText_medium"
+                android:text="Forgot Password ?" />
 
-    <Button
-            android:id="@+id/registerButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_button_background"
-            android:text="@string/register_button"
-            android:textAllCaps="false"
-            android:textSize="21sp" />
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/progressbar_medium"
+                android:gravity="center"
+                android:scaleType="centerInside" />
 
-    <com.google.android.gms.common.SignInButton
-            android:id="@+id/google_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/signIn_google_standard"
-            android:layout_marginTop="@dimen/signIn_google_standard"
-            android:layout_marginEnd="@dimen/signIn_google_standard"
-            android:layout_marginBottom="@dimen/signIn_google_standard"
-            android:padding="@dimen/signIn_google_standard" />
+        <Button
+                android:id="@+id/LogIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_button_background"
+                android:text="@string/login_button"
+                android:textAllCaps="false"
+                android:textSize="21sp" />
 
-</LinearLayout>
+        <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_button_background"
+                android:text="@string/register_button"
+                android:textAllCaps="false"
+                android:textSize="21sp" />
+
+        <com.google.android.gms.common.SignInButton
+                android:id="@+id/google_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/signIn_google_standard"
+                android:layout_marginTop="@dimen/signIn_google_standard"
+                android:layout_marginEnd="@dimen/signIn_google_standard"
+                android:layout_marginBottom="@dimen/signIn_google_standard"
+                android:padding="@dimen/signIn_google_standard" />
+    </LinearLayout>
+    
+</RelativeLayout>

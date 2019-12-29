@@ -32,9 +32,9 @@ class News_Fragment : Fragment() {
     var news: ArrayList<NewsModel>? = null
     lateinit var mAdView: AdView
 
+    var runnable: Runnable = Runnable { metodo_timer() }
     var contador = 0
     var handler = Handler()
-    var runnable: Runnable = Runnable { metodo_timer() }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

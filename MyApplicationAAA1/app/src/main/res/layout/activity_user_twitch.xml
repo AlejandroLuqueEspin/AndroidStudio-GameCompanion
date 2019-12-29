@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="@drawable/login_background"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-    <ImageView
-            android:id="@+id/imageProfileTwitch"
-            android:layout_width="165dp"
-            android:layout_height="158dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/margin_extra"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:src="@drawable/ic_account_circle_24px" />
-
-
-    <TextView
-            android:id="@+id/loginTwitch"
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="Tes of username"
-            android:padding="@dimen/marginText_medium" />
-
-    <TextView
-            android:id="@+id/displayNameTwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/marginText_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="Tesofemail@shit.cat"
-            android:padding="@dimen/marginText_medium" />
-
-    <TextView
-            android:id="@+id/descriptionTwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/marginText_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="T12345678Test"
-            android:padding="@dimen/marginText_medium" />
-    <TextView
-            android:id="@+id/emailTwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/marginText_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:background="@drawable/login_edit_background"
-            android:drawableStart="@drawable/ic_user"
-            android:drawablePadding="@dimen/marginText_medium"
-            android:hint="T12345678Test"
-            android:padding="@dimen/marginText_medium" />
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
 
 
+        <ImageView
+                android:id="@+id/imageProfileTwitch"
+                android:layout_width="165dp"
+                android:layout_height="158dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:src="@drawable/ic_account_circle_24px" />
 
-</LinearLayout>
+
+        <TextView
+                android:id="@+id/loginTwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="Tes of username"
+                android:padding="@dimen/marginText_medium" />
+
+        <TextView
+                android:id="@+id/displayNameTwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/marginText_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="Tesofemail@shit.cat"
+                android:padding="@dimen/marginText_medium" />
+
+        <TextView
+                android:id="@+id/descriptionTwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/marginText_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="T12345678Test"
+                android:padding="@dimen/marginText_medium" />
+        <TextView
+                android:id="@+id/emailTwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/marginText_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:background="@drawable/login_edit_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="@dimen/marginText_medium"
+                android:hint="T12345678Test"
+                android:padding="@dimen/marginText_medium" />
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
