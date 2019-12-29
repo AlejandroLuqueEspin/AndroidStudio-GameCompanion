@@ -1,43 +1,49 @@
 package com.example.myapplicationaaa1.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.model.NewsModel
 import com.example.myapplicationaaa1.model.UserModel
+import com.example.myapplicationaaa1.dialogs.DeletePostDialog
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.item_news.view.*
-import kotlin.coroutines.coroutineContext
+import androidx.fragment.app.FragmentManager
 
 
-class NewsAdapter(var listOfNews: ArrayList<NewsModel>) :
-
+class NewsAdapter(var listOfNews: ArrayList<NewsModel>,_fragmentmANAGER:FragmentManager) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
+    val fragmentManager=_fragmentmANAGER
 
     class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         val username: TextView = item.userNameView
         val textPosted: TextView = item.textPosted
         val imageUserView: ImageView = item.userImageView
+        val eraseButton: ImageButton=item.erasePostButton
     }
-
 
     override fun getItemCount(): Int {
         return listOfNews.count()
     }
-
     // Create item_joke View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val item: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return ViewHolder(item)
     }
+
+
 
     // Update Items
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -67,11 +73,31 @@ class NewsAdapter(var listOfNews: ArrayList<NewsModel>) :
         }
         Glide.with(holder.imageUserView.context).load(listOfNews[position])
             .into(holder.imageUserView)
+
+        if(FirebaseAuth.getInstance().currentUser?.uid ?: String() !=listOfNews[position].userUID){
+            holder.eraseButton.visibility=GONE
+        }
+        else
+        {
+            holder.eraseButton.visibility= VISIBLE
+            holder.eraseButton.setOnClickListener {
+                listOfNews[position].postUID?.let { it1 -> openDialog(it1) }
+            }
+        }
     }
 
+
+    fun openDialog(_postUID:String){
+
+        Log.w("CLICKPOSTDELETE", "CLICKPOSTDELETE")
+        val exampleDialog = DeletePostDialog(_postUID)
+        exampleDialog.show( fragmentManager, "example dialog")
+
+    }
 
      fun GetNews(position: Int): NewsModel {
         return listOfNews.get(position)
     }
+
 
 }

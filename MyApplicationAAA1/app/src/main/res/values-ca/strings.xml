@@ -31,4 +31,8 @@
 
     //DETAIL POST
     <string name="add_comment_button">Comentar</string>
+    //STREAMS
+    <string name="ff14_search_Button">Joc</string>
+    <string name="streams_search_Button">Carregar Streams</string>
+    <string name="players_search_Button">Jugador</string>
 </resources>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_medium"
         android:orientation="vertical">
 
     <LinearLayout
+            android:id="@+id/relativelayout00"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
@@ -35,19 +37,30 @@
                     android:id="@+id/textPosted"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:text="TLorem ipsum dolor sit amet consectetur adipiscing, elit nam rhoncus dis cras libero sollicitudin, porta congue justo fusce non. A cum auctor magnis ridiculus egestas placerat lacinia lacus mus, suspendisse nulla semper volutpat ad leo convallis dui lectus, natoque faucibus orci cubilia tempor velit nec dis. Interdum mollis massa imperdiet primis dictumst donec pellentesque condimentum, viverra fames a sodales ultricies blandit sociis sagittis, rutrum in tempor parturient ligula pretium conubia." />
         </LinearLayout>
 
 
     </LinearLayout>
 
-    //line specific height
     <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_gravity="bottom"
-            android:layout_marginTop="@dimen/margin_line"
-            android:background="@android:color/white" />
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/relativelayout00"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/margin_line"
+        android:background="@android:color/white"
+     />
 
+    <ImageButton
+            android:id="@+id/erasePostButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/relativelayout00"
+            android:background="@android:color/transparent"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:src="@drawable/ic_cancel_circle"
+            android:contentDescription="TODO" />
 
-</LinearLayout>
+</RelativeLayout >

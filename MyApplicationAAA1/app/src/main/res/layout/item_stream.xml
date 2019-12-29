@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:orientation="vertical">
+
+
+    <TextView
+            android:id="@+id/titleViewTwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="XD El puto amo lol a ver si gano al fornite ww"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+    <TextView
+            android:id="@+id/userNameViewTwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="ElRubiusOMG"
+             />
+
+    <ImageView
+            android:id="@+id/imageTwitch"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_width="300dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center_horizontal"
+/>
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+>
+        <Button
+                android:layout_marginEnd="@dimen/marginText_medium"
+                android:id="@+id/playerSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_button_background"
+                android:text="@string/players_search_Button"
+                android:textAllCaps="false"
+                android:padding="@dimen/marginText_medium"
+                android:textSize="21sp" />
+        <Button
+                android:id="@+id/gameSearchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_button_background"
+                android:text="@string/ff14_search_Button"
+                android:textAllCaps="false"
+                android:padding="@dimen/margin_small"
+
+                android:textSize="21sp" />
+
+        <ImageView
+                android:id="@+id/imageGameTwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+        </ImageView>
+
+    </LinearLayout>
+
+
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/relativelayout00"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/margin_line"
+            android:background="@android:color/white" />
+
+
+</LinearLayout>

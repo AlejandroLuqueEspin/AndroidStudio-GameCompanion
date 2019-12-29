@@ -167,9 +167,9 @@ class News_Fragment : Fragment() {
                 var newsListModel: NewsList = NewsList(it)
                 // Get List of news
                 news = newsListModel.news
+
                 // Configure Recyclerview
-                recyclerView.adapter =
-                    NewsAdapter(ArrayList(news.orEmpty()))
+                recyclerView.adapter = NewsAdapter(ArrayList(news.orEmpty()),activity!!.supportFragmentManager)
                 recyclerView.layoutManager = LinearLayoutManager(context)
                 configureOnClickRecyclerView()
 

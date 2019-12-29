@@ -30,5 +30,10 @@
     //DETAIL POST
     <string name="add_comment_button">Comment</string>
 
+    //STREAMS
+    <string name="ff14_search_Button">Game</string>
+    <string name="streams_search_Button">Refresh Streams</string>
+    <string name="players_search_Button">Player</string>
+
 
 </resources>

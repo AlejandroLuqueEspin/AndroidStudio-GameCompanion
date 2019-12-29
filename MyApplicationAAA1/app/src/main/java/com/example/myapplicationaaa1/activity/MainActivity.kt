@@ -1,7 +1,11 @@
 package com.example.myapplicationaaa1.activity
 
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.myapplicationaaa1.R
 import com.example.myapplicationaaa1.fragment.Login_Fragment
 import com.example.myapplicationaaa1.fragment.News_Fragment
@@ -23,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.add(fragmentContainer.id, profileFragment)
         fragmentTransaction.commit()
 
+        setupPermissions()
 
         bottomNavView.setOnNavigationItemSelectedListener { menuItem ->
             //            val parametres =Bundle()
@@ -61,5 +66,46 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+
+    //request
+    val RECORD_REQUEST_CODE = 101
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            RECORD_REQUEST_CODE -> {
+
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                    Log.i(TAG, "Permission has been denied by user")
+                } else {
+                    Log.i(TAG, "Permission has been granted by user")
+                }
+            }
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    private val TAG = "Permission"
+
+    private fun setupPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.RECORD_AUDIO)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Permission to record denied")
+            makeRequest()
+
+        }
+    }
+    private fun makeRequest() {
+        ActivityCompat.requestPermissions(this,
+            arrayOf(android.Manifest.permission.RECORD_AUDIO),
+            RECORD_REQUEST_CODE)
     }
 }

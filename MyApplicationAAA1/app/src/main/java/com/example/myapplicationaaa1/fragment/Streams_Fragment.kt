@@ -1,20 +1,28 @@
 package com.example.myapplicationaaa1.fragment
 
-import android.content.Context
-import android.net.Uri
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.example.myapplicationaaa1.R
-import com.example.myapplicationaaa1.model.CharacterResponse
-import com.example.myapplicationaaa1.model.StreamsResponse
+import com.example.myapplicationaaa1.activity.PostDetailActivity
+import com.example.myapplicationaaa1.adapters.NewsAdapter
+import com.example.myapplicationaaa1.adapters.StreamsAdapter
+import com.example.myapplicationaaa1.model.*
 import com.example.myapplicationaaa1.network.RickAndMortyHttpClient
 import com.example.myapplicationaaa1.network.TwitchHttpClient
-import okhttp3.ResponseBody
+import com.example.myapplicationaaa1.utils.ItemClickSupport
+import kotlinx.android.synthetic.main.fragment_news.*
+import kotlinx.android.synthetic.main.fragment_twitch.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +34,7 @@ class Streams_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater!!.inflate(R.layout.fragment_test_twitch, container, false)
+        val view: View = inflater!!.inflate(R.layout.fragment_twitch, container, false)
 
         // Inflate the layout for this fragment
         return view
@@ -34,53 +42,111 @@ class Streams_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressBarTwitch.visibility = GONE
 
-        getStreams()
+        streamsSearchButton.setOnClickListener {
+            progressBarTwitch.visibility = VISIBLE
+
+            getStreamsTwitch()
+        }
+
     }
 
-}
+
+    private fun getRickAndMortyCharacters() {
+        RickAndMortyHttpClient.service.getCharacters().enqueue(
+            object : Callback<CharacterResponse> {
+                override fun onResponse(
+                    call: Call<CharacterResponse>,
+                    response: Response<CharacterResponse>
+                ) {
+                    Log.i("StreamsFragment", "")
+                    if (response.code() == 200) {//response.isSuccessful
+                        Log.i("StreamsFragment", "TODO OK")
+                        Log.i(
+                            "StreamsFragment",
+                            response.body()?.results?.toString() ?: "Empty Body"
+                        )
+                    } else {
+                        Log.w(
+                            "StreamsFragment",
+                            response.errorBody()?.string() ?: "Null error body"
+                        )
+                    }
+                }
+
+                override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
+                    Log.w("StreamsFragment", "Null error body")
+
+                }
+
+            })
+    }
 
 
-private fun getRickAndMortyCharacters() {
-    RickAndMortyHttpClient.service.getCharacters().enqueue(
-        object : Callback<CharacterResponse> {
+
+    private fun getStreamsTwitch() {
+        TwitchHttpClient.service.getStreams().enqueue(object : Callback<TWStreamsResponse> {
             override fun onResponse(
-                call: Call<CharacterResponse>,
-                response: Response<CharacterResponse>
+                call: Call<TWStreamsResponse>,
+                response: Response<TWStreamsResponse>
             ) {
-                Log.i("StreamsFragment", "")
-                if (response.code() == 200) {//response.isSuccessful
-                    Log.i("StreamsFragment", "TODO OK")
-                    Log.i("StreamsFragment", response.body()?.results?.toString() ?: "Empty Body")
-                } else {
-                    Log.w("StreamsFragment", response.errorBody()?.string() ?: "Null error body")
+                response.body()?.data?.let { streams ->
+                    for (stream in streams) {
+                        Log.i(
+                            "MainActivity",
+                            "Title: ${stream.title} and image: ${stream.imageUrl} and username: ${stream.username} and user_id: ${stream.user_id}and game_id: ${stream.game_id}"
+                        )
+                        Log.i(
+                            "MainActivity",
+                            "Stream Url: https://www.twitch.tv/${stream.username}"
+                        )
+                    }
+                    progressBarTwitch.visibility = GONE
+
+
+                    // Configure Recyclerview
+                    recyclerViewTwitch.adapter = StreamsAdapter(ArrayList(streams.orEmpty()),activity!!.supportFragmentManager,requireContext())
+                    recyclerViewTwitch.layoutManager = LinearLayoutManager(context)
+//                    configureOnClickRecyclerView()
                 }
             }
 
-            override fun onFailure(call: Call<CharacterResponse>, t: Throwable) {
-                Log.w("StreamsFragment", "Null error body")
-
+            override fun onFailure(call: Call<TWStreamsResponse>, t: Throwable) {
+                t.printStackTrace()
             }
 
         })
-}
 
-private fun getStreams() {
+    }
+//    private fun configureOnClickRecyclerView() {
+//
+//        val adapter: StreamsAdapter = recyclerViewTwitch.adapter as StreamsAdapter
+//        val nullableIndexLayout: Int? = R.layout.item_stream as Int? // allowed, always works
+//
+//        if (nullableIndexLayout != null) {
+//            ItemClickSupport.addTo(recyclerViewTwitch, nullableIndexLayout)
+//                .setOnItemClickListener(object : ItemClickSupport.OnItemClickListener {
+//                    override fun onItemClicked(recyclerViewTwitch: RecyclerView, position: Int, v: View) {
+//                        // 1 - Get user from adapter
+//                        val stream = adapter.GetStreams(position)
+//                        // 2 - Show result in a Toast
+//                        Toast.makeText(
+//                            context,
+//                            "You clicked on user : " + stream.username,
+//                            Toast.LENGTH_SHORT
+//                        ).show()
+//
+//                        //open detail activity
+////                        val intent = Intent(requireContext(), PostDetailActivity::class.java)
+////                        intent.putExtra("postUserUID", news.userUID) //User id
+////                        intent.putExtra("postUID", news.postUID) //Post id
+////                        startActivity(intent)
+//
+//                    }
+//                })
+//        }
+//
+//    }
 
-    TwitchHttpClient.service.getStreams(gameId = "33214").enqueue(object : Callback<StreamsResponse> {
-        override fun onFailure(call: Call<StreamsResponse>, t: Throwable) {
-            Log.w("StreamsFragtment",t.localizedMessage)
-
-        }
-        override fun onResponse(call: Call<StreamsResponse>, response: Response<StreamsResponse>) {
-
-            if(response.isSuccessful){
-                val streams=response.body()?.results?:emptyList()
-                Log.i("StreamsFragtment",streams.toString())
-            }else{
-                Log.w("StreamsFragtment",response.errorBody()?.string()?:"null error body")
-            }
-        }
-
-    })
 }

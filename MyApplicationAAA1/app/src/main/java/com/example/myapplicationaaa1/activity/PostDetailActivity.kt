@@ -140,7 +140,7 @@ class PostDetailActivity : AppCompatActivity() {
                     val news: ArrayList<NewsModel>? = newsListModel.news
                     // Configure Recyclerview
                     recyclerViewPostDetailComments.adapter =
-                        NewsAdapter(ArrayList(news.orEmpty()))
+                        NewsAdapter(ArrayList(news.orEmpty()),this!!.supportFragmentManager)
                     recyclerViewPostDetailComments.layoutManager = LinearLayoutManager(applicationContext)
 
                 },
