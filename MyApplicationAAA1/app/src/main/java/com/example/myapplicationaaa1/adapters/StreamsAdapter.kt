@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.myapplicationaaa1.R
+import com.example.myapplicationaaa1.activity.GameTwitchActivity
 import com.example.myapplicationaaa1.activity.UserTwitchActivity
 import com.example.myapplicationaaa1.model.TWStreamsModel
 import com.example.myapplicationaaa1.dialogs.GameDialog
@@ -88,8 +89,10 @@ class StreamsAdapter(var listOfStreams: ArrayList<TWStreamsModel>,_fragmentmANAG
                     for (game in games) {
                         Log.w("CLICKPOSTDELETE", "CLICKPOSTDELETE")
 
-                        val exampleDialog = GameDialog(game)
-                        exampleDialog.show( fragmentManager, "example dialog")                    }
+                        val intent = Intent(context, GameTwitchActivity::class.java)
+                        intent.putExtra("twitchGameName", game.name) //User id
+                        intent.putExtra("twitchGameUrl", game.imageUrl) //User id
+                        startActivity(context,intent,null)                   }
                 }
             }
 

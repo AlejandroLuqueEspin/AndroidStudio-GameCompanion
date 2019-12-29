@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/login_background"
+        android:orientation="vertical">
+
+
+
+
+
+    <TextView
+            android:id="@+id/gameNameTwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:textAlignment="center"
+            android:background="@drawable/login_edit_background"
+            android:drawablePadding="@dimen/marginText_medium"
+            android:hint="Tes of username"
+            android:padding="@dimen/marginText_medium" />
+
+
+    <ImageView
+            android:id="@+id/imageGameTwitch"
+            android:layout_width="332dp"
+            android:layout_height="338dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_extra"
+            android:layout_marginBottom="@dimen/margin_extra"
+            android:src="@drawable/ic_account_circle_24px" />
+
+
+</LinearLayout>

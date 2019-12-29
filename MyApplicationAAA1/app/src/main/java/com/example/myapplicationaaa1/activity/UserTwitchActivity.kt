@@ -29,12 +29,6 @@ class UserTwitchActivity : AppCompatActivity() {
             twitchUserImageUrl=b.getString("twitchUserImageUrl") //User id
             twitchLogin=b.getString("twitchLogin") //User id
 
-
-            Toast.makeText(
-                this,
-                twitchDescription+"------"+twitchDisplayName+"------"+twitchEmail+"------"+twitchUserImageUrl+"------"+twitchLogin+"------",
-                Toast.LENGTH_SHORT
-            ).show()
         } else
             finish()
 

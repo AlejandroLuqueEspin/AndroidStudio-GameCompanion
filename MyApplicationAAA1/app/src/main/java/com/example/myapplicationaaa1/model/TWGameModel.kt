@@ -2,7 +2,6 @@ package com.example.myapplicationaaa1.model
 
 data class TWGameModel(
     var name: String? = null,
-    var username: String? = null,
     private var box_art_url: String? = null
 ) {
     val imageUrl: String?

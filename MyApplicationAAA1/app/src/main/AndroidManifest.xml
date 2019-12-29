@@ -15,7 +15,8 @@
             android:roundIcon="@mipmap/ic_launcher_round_ff"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.UserTwitchActivity"></activity>
+        <activity android:name=".activity.GameTwitchActivity"></activity>
+        <activity android:name=".activity.UserTwitchActivity" />
         <activity android:name=".activity.AddCommentActivity" />
         <activity android:name=".activity.PostDetailActivity" />
 
