@@ -111,7 +111,7 @@ class News_Fragment : Fragment() {
                 failureListener = {
                     Toast.makeText(
                         context,
-                        "No se han detectado posts al mirar",
+                        "No posts detected",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -136,12 +136,6 @@ class News_Fragment : Fragment() {
                     override fun onItemClicked(recyclerView: RecyclerView, position: Int, v: View) {
                         // 1 - Get user from adapter
                         val news = adapter.GetNews(position)
-                        // 2 - Show result in a Toast
-                        Toast.makeText(
-                            context,
-                            "You clicked on user : " + news.textPosted,
-                            Toast.LENGTH_SHORT
-                        ).show()
 
                         //open detail activity
                         val intent = Intent(requireContext(), PostDetailActivity::class.java)
@@ -180,7 +174,7 @@ class News_Fragment : Fragment() {
             failureListener = {
                 Toast.makeText(
                     context,
-                    "No se han encontrado posts pruebalo de nuevo mas tarde",
+                    "No posts found try again later",
                     Toast.LENGTH_LONG
                 ).show()
             }

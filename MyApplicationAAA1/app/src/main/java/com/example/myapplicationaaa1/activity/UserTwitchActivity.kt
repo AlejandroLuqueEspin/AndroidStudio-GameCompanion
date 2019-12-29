@@ -2,11 +2,8 @@ package com.example.myapplicationaaa1.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.myapplicationaaa1.R
-import com.example.myapplicationaaa1.model.TWUserModel
-import com.example.myapplicationaaa1.model.TWUserResponse
 import kotlinx.android.synthetic.main.activity_user_twitch.*
 
 class UserTwitchActivity : AppCompatActivity() {

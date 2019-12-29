@@ -21,19 +21,9 @@ import com.google.android.gms.location.*
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.android.synthetic.main.activity_main.*
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.common.api.GoogleApiClient
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import android.os.Handler
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.Toast
-import com.example.myapplicationaaa1.model.NewsList
-import com.example.myapplicationaaa1.model.NewsModel
-import com.example.myapplicationaaa1.utils.UserDao
-import kotlinx.android.synthetic.main.fragment_news.*
 
 
 class MainActivity : AppCompatActivity() {

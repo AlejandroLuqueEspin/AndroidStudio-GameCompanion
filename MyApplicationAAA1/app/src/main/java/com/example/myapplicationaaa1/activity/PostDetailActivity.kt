@@ -51,7 +51,7 @@ class PostDetailActivity : AppCompatActivity() {
             else
                 Toast.makeText(
                     this,
-                    "Inicie sesion antes para acceder a esta función",
+                    "Login before to access this function",
                     Toast.LENGTH_LONG
                 ).show()
         }
@@ -147,7 +147,7 @@ class PostDetailActivity : AppCompatActivity() {
                 failureListener = {
                     Toast.makeText(
                         applicationContext,
-                        "No se han encontrado posts pruebalo de nuevo mas tarde",
+                        "No posts found try it again later",
                         Toast.LENGTH_LONG
                     ).show()
                 }

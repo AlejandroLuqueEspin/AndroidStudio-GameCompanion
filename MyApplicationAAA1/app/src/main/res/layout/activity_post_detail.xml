@@ -10,6 +10,7 @@
             android:layout_marginStart="@dimen/margin_medium"
             android:background="@drawable/login_edit_background"
             android:padding="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
             android:orientation="horizontal">
 
@@ -17,7 +18,7 @@
                 android:id="@+id/userImageViewCommentDetail"
                 android:layout_width="@dimen/photo_medium"
                 android:layout_height="@dimen/photo_medium"
-                
+
                 android:src="@drawable/ic_account_circle_24px" />
 
         <LinearLayout

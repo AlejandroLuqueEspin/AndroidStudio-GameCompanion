@@ -1,6 +1,5 @@
 package com.example.myapplicationaaa1.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,19 +8,12 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-
 import com.example.myapplicationaaa1.R
-import com.example.myapplicationaaa1.activity.PostDetailActivity
-import com.example.myapplicationaaa1.adapters.NewsAdapter
 import com.example.myapplicationaaa1.adapters.StreamsAdapter
 import com.example.myapplicationaaa1.model.*
 import com.example.myapplicationaaa1.network.RickAndMortyHttpClient
 import com.example.myapplicationaaa1.network.TwitchHttpClient
-import com.example.myapplicationaaa1.utils.ItemClickSupport
-import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.android.synthetic.main.fragment_twitch.*
 import retrofit2.Call
 import retrofit2.Callback

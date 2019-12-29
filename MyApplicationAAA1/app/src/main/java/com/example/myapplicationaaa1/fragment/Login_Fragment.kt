@@ -45,9 +45,7 @@ class Login_Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val progressBar: ProgressBar =progressBar2
-//
-//        if(progressBar!=null)
+
         progressBar.visibility = View.GONE
         registerButton.visibility = View.VISIBLE
         LogIn.visibility = View.VISIBLE
@@ -157,47 +155,6 @@ class Login_Fragment : Fragment() {
     }
 
 
-    private fun getAllUsersTest() {
-        UserDao().getAll(
-            successListener = { users ->
-                //adapter.users=users
-
-            },
-            failureListener = {
-                Toast.makeText(
-                    context,
-                    "Los datos de usuario/contraseñoa son incorrectos",
-                    Toast.LENGTH_LONG
-                ).show()
-
-                Toast.makeText(requireContext(), it.localizedMessage, Toast.LENGTH_LONG).show()
-            }
-        )
-    }
-
-    private fun getUser(userId: String) {
-        UserDao().get(userId = userId,
-            successListener = {
-
-                Toast.makeText(
-                    context,
-                    "Los datos de usuario/contraseñoa son correctos",
-                    Toast.LENGTH_LONG
-                ).show()
-
-            },
-            failureListener = {
-                Toast.makeText(
-                    context,
-                    "Los datos de usuario/contraseñoa son incorrectos",
-                    Toast.LENGTH_LONG
-                ).show()
-
-
-            })
-    }
-
-
     val RC_SIGN_IN: Int = 1
     lateinit var mGoogleSignInClient: GoogleSignInClient
     lateinit var mGoogleSignInOptions: GoogleSignInOptions
@@ -227,7 +184,7 @@ class Login_Fragment : Fragment() {
                 val account = task.getResult(ApiException::class.java)
                 account?.let { firebaseAuthWithGoogle(it) }
             } catch (e: ApiException) {
-                Toast.makeText(context, "Google sign in failed :( 2", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Google sign in failed :(", Toast.LENGTH_LONG).show()
                 Log.i("GOOGLE_IDENTIFKDSPF", "signInResult:failed code=" + e.getStatusCode());
 
             }
