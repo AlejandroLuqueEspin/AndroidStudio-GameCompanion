@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "329282842351",
-    "firebase_url": "https://entregafinalgamecompanion.firebaseio.com",
-    "project_id": "entregafinalgamecompanion",
-    "storage_bucket": "entregafinalgamecompanion.appspot.com"
+    "project_number": "783511248915",
+    "firebase_url": "https://alejandroluquegamecompanion.firebaseio.com",
+    "project_id": "alejandroluquegamecompanion",
+    "storage_bucket": "alejandroluquegamecompanion.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:329282842351:android:60995fb8b1e34399a3f51a",
+        "mobilesdk_app_id": "1:783511248915:android:b4c8a6e3e9d544ffb35fe6",
         "android_client_info": {
           "package_name": "com.example.myapplicationaaa1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "329282842351-3u0tqvsf68h379s3bq1t1su0rrrce4v1.apps.googleusercontent.com",
+          "client_id": "783511248915-qs3rg8c000aiais3gg55no4k4fgmo3tp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.myapplicationaaa1",
@@ -23,20 +23,28 @@
           }
         },
         {
-          "client_id": "329282842351-shmnhbo9gp5emf94nqq2qqof1csprvft.apps.googleusercontent.com",
+          "client_id": "783511248915-kun03aja9dkkdbdpi56m6jhe9mr1q8uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myapplicationaaa1",
+            "certificate_hash": "dcc687d21126be608fb723976632e90f0b64e2b4"
+          }
+        },
+        {
+          "client_id": "783511248915-sba5d194obapffnj610sjej5e51r0gff.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAfG5USUJGvOjF41GudAe1-Onnyj0JEMQI"
+          "current_key": "AIzaSyCCAUgggNsFpBzQ5f1tPkqKpk2TYOZqZeU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "329282842351-shmnhbo9gp5emf94nqq2qqof1csprvft.apps.googleusercontent.com",
+              "client_id": "783511248915-sba5d194obapffnj610sjej5e51r0gff.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

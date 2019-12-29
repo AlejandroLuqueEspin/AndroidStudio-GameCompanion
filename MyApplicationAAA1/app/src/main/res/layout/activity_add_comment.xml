@@ -18,6 +18,7 @@
                 android:layout_width="@dimen/photo_extra"
                 android:layout_height="@dimen/photo_extra"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/margin_extra"
                 android:src="@drawable/ic_icon" />
 
         <TextView

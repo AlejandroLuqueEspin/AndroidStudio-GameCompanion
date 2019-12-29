@@ -4,6 +4,7 @@ package com.example.myapplicationaaa1.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -226,7 +227,9 @@ class Login_Fragment : Fragment() {
                 val account = task.getResult(ApiException::class.java)
                 account?.let { firebaseAuthWithGoogle(it) }
             } catch (e: ApiException) {
-                Toast.makeText(context, "Google sign in failed:(", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "Google sign in failed :( 2", Toast.LENGTH_LONG).show()
+                Log.i("GOOGLE_IDENTIFKDSPF", "signInResult:failed code=" + e.getStatusCode());
+
             }
         }
     }
