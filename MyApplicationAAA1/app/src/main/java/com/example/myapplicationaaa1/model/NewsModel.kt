@@ -11,6 +11,7 @@ data class NewsModel(
     val imageUserUrl: String? = null,
     val userUID: String? = null,
     val postUID: String? = null,
+    val upPostUID: String? = null,
     val userName: String? = null
 
 )

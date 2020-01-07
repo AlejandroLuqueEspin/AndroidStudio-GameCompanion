@@ -4,9 +4,10 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDialogFragment
+import com.example.myapplicationaaa1.fragment.News_Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 
- class DeletePostDialog(val postUID:String) : AppCompatDialogFragment() {
+ class DeletePostDialog(val postUID:String,val UPpostUID:String?,val commented:Boolean) : AppCompatDialogFragment() {
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -15,6 +16,22 @@ import com.google.firebase.firestore.FirebaseFirestore
             .setMessage("Are you sure you want to delete this post? This cannot be undone.")
             .setPositiveButton("OK") { dialogInterface, i ->
                 //GetThePost
+                if(commented){
+                    postUID?.let { checkedPostUID ->
+                        FirebaseFirestore.getInstance()
+                            .collection("Posts")
+                            .document(UPpostUID!!)
+                            .collection("comments")
+                            .document(postUID)
+                            .delete()
+                            .addOnSuccessListener { documentSnapshot ->
+
+                            }.addOnFailureListener { e ->
+
+                            }
+                    }
+                }
+                else {
                     postUID?.let { checkedPostUID ->
                         FirebaseFirestore.getInstance()
                             .collection("Posts")
@@ -24,8 +41,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 
                             }.addOnFailureListener { e ->
 
+
                             }
                     }
+                }
                 }
             .setNegativeButton("CANCEL") { dialogInterface, i ->
 

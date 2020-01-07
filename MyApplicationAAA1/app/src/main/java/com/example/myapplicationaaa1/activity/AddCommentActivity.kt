@@ -73,6 +73,7 @@ class AddCommentActivity : AppCompatActivity() {
                 postUID =  UUID.randomUUID().toString(),
                 userUID = FirebaseAuth.getInstance().currentUser?.uid,
                 textPosted = postText,
+                upPostUID = postUID,
                 imageUserUrl = applicationContext.getSharedPreferences(
                     "userProfile",
                     Context.MODE_PRIVATE

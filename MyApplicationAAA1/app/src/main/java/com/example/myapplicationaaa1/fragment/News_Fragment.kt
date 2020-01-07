@@ -101,9 +101,10 @@ class News_Fragment : Fragment() {
 
 
                     if (news!!.size!! < news2!!.size!!) {
-                        if(refreshButton.visibility== GONE)
-                            refreshButton.visibility = VISIBLE
-
+                        if(refreshButton!=null) {
+                            if (refreshButton.visibility == GONE)
+                                refreshButton.visibility = VISIBLE
+                        }
                     }
 
 
@@ -149,7 +150,7 @@ class News_Fragment : Fragment() {
 
     }
 
-    private fun SeePosts() {
+     fun SeePosts() {
         val progressBar: ProgressBar = progressBar2
 
         UserDao().getAllPosts(

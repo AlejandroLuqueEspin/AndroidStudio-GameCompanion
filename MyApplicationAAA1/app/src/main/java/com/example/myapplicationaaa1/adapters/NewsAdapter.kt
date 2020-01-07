@@ -21,28 +21,28 @@ import kotlinx.android.synthetic.main.item_news.view.*
 import androidx.fragment.app.FragmentManager
 
 
-class NewsAdapter(var listOfNews: ArrayList<NewsModel>,_fragmentmANAGER:FragmentManager) :
+class NewsAdapter(var listOfNews: ArrayList<NewsModel>, _fragmentmANAGER: FragmentManager) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
-    val fragmentManager=_fragmentmANAGER
+    val fragmentManager = _fragmentmANAGER
 
     class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
 
         val username: TextView = item.userNameView
         val textPosted: TextView = item.textPosted
         val imageUserView: ImageView = item.userImageView
-        val eraseButton: ImageButton=item.erasePostButton
+        val eraseButton: ImageButton = item.erasePostButton
     }
 
     override fun getItemCount(): Int {
         return listOfNews.count()
     }
+
     // Create item_joke View
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val item: View =
             LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
         return ViewHolder(item)
     }
-
 
 
     // Update Items
@@ -74,28 +74,36 @@ class NewsAdapter(var listOfNews: ArrayList<NewsModel>,_fragmentmANAGER:Fragment
         Glide.with(holder.imageUserView.context).load(listOfNews[position])
             .into(holder.imageUserView)
 
-        if(FirebaseAuth.getInstance().currentUser?.uid ?: String() !=listOfNews[position].userUID){
-            holder.eraseButton.visibility=GONE
-        }
-        else
-        {
-            holder.eraseButton.visibility= VISIBLE
+        if (FirebaseAuth.getInstance().currentUser?.uid ?: String() != listOfNews[position].userUID) {
+            holder.eraseButton.visibility = GONE
+        } else {
+            holder.eraseButton.visibility = VISIBLE
             holder.eraseButton.setOnClickListener {
-                listOfNews[position].postUID?.let { it1 -> openDialog(it1) }
+                listOfNews[position].postUID?.let { it1 ->
+                        openDialog(it1,  listOfNews[position].upPostUID)
+
+                }
             }
         }
     }
 
 
-    fun openDialog(_postUID:String){
+    fun openDialog(_postUID: String, _UPpostUID: String?) {
 
         Log.w("CLICKPOSTDELETE", "CLICKPOSTDELETE")
-        val exampleDialog = DeletePostDialog(_postUID)
-        exampleDialog.show( fragmentManager, "example dialog")
+        if (_UPpostUID==null) {
+            val exampleDialog = DeletePostDialog(_postUID, _UPpostUID, false)
+            exampleDialog.show(fragmentManager, "example dialog")
+
+        } else {
+            val exampleDialog = DeletePostDialog(_postUID, _UPpostUID, true)
+            exampleDialog.show(fragmentManager, "example dialog")
+
+        }
 
     }
 
-     fun GetNews(position: Int): NewsModel {
+    fun GetNews(position: Int): NewsModel {
         return listOfNews.get(position)
     }
 
